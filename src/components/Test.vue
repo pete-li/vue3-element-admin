@@ -1,7 +1,7 @@
 <template>
-  <Test></Test>
+  <h1>测试组件</h1>
 </template>
 
 <script lang="ts" setup>
-import Test from '@/components/Test.vue'
+console.log(import.meta.env)
 </script>
