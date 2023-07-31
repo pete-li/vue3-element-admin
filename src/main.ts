@@ -1,5 +1,11 @@
 import { createApp } from 'vue'
-import './style.css'
+import ElementPlus from 'element-plus'
+import zhCN from 'element-plus/lib/locale/lang/zh-cn' //此处国际化有坑 引包有问题
+import 'element-plus/dist/index.css'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(ElementPlus, {
+  locale: zhCN,
+})
+app.mount('#app')
