@@ -1,7 +1,7 @@
 <template>
-  <Test></Test>
+  <SvgIcon name="home" color="red" width="200px" height="200px"></SvgIcon>
 </template>
 
 <script lang="ts" setup>
-import Test from '@/components/Test.vue'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 </script>
