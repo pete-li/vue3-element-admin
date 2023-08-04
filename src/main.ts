@@ -5,6 +5,7 @@ import 'element-plus/dist/index.css'
 import 'virtual:svg-icons-register'
 import GlobalComponents from '@/components'
 import App from '@/App.vue'
+import axios from 'axios'
 
 import '@/styles/index.scss'
 
@@ -13,4 +14,14 @@ app.use(GlobalComponents) // 全局注册自定义组件
 app.use(ElementPlus, {
   locale: zhCN,
 })
+
+axios({
+  url: '/api/user/login',
+  method: 'post',
+  data: {
+    username: 'peter',
+    password: 1111,
+  },
+})
+
 app.mount('#app')
