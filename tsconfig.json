@@ -10,7 +10,7 @@
       "@/*": ["src/*"] //路径映射，相对于baseUrl
     },
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
