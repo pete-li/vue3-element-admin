@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { GET_TOKEN } from './token'
 
 const request = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
@@ -8,7 +9,7 @@ const request = axios.create({
 
 // 请求拦截器
 request.interceptors.request.use((config) => {
-  config.headers.token = '111111'
+  config.headers.token = GET_TOKEN()
   return config
 })
 

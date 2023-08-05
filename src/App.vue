@@ -1,27 +1,7 @@
 <template>
-  <div>
-    <h1>测试代码</h1>
-  </div>
+  <router-view></router-view>
 </template>
 
-<script lang="ts" setup>
-import { onMounted } from 'vue'
-import { login } from '@/api/user'
+<script lang="ts" setup></script>
 
-onMounted(() => {
-  login({
-    username: 'admin',
-    password: '123456',
-  }).then((res) => {
-    console.log(res)
-  })
-})
-</script>
-
-<style lang="scss" scoped>
-div {
-  h1 {
-    color: $base-color;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
