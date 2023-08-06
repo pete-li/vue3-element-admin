@@ -39,6 +39,7 @@ import { User, Lock } from '@element-plus/icons-vue'
 import useUserStore from '@/store/modules/user'
 import { ElNotification } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { getTime } from '@/utils/getTime'
 
 let userForm = reactive({
   username: 'admin',
@@ -58,6 +59,7 @@ const loginHandler = async () => {
     ElNotification({
       type: 'success',
       message: '登录成功!',
+      title: `HI,${getTime()}好`,
     })
   } catch (error) {
     ElNotification({
