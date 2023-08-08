@@ -1,0 +1,207 @@
+
+.transfer {
+  width: 100px;
+  height: 200px;
+  color: #666;
+}
+
+.common {
+  width: 100px;
+  height: 100px;
+  color: #666;
+}
+
+/* 
+// @use与@import
+1.use引用多次不会重复引入，import会
+2.use是模块化思想 引入文件都是一个模块，默认文件名是模块名 as XX 可改
+3. -或_开头的变量可作为私有变量
+4. !default默认值可用with(?)来改默认值
+5.引用多个文件，use的变量名不会覆盖，可用模块名访问，而import会被覆盖.
+
+// @forward相当于js中的export导出功能
+
+// 三代编译器：dart-sass(最新) 弃用：node-sass ruby-sass
+*/
+p {
+  color: skyblue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: matrix3d(0, 0, 0);
+          transform: matrix3d(0, 0, 0);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container {
+  color: #f00;
+  background-color: #fff;
+}
+
+.p {
+  border-color: #333;
+}
+
+.foo {
+  color: #f00;
+}
+
+.mixin1 {
+  padding: 10px 0px;
+}
+
+.mixin2 .foo2 {
+  padding: 10px 0px;
+}
+
+.mixin3 {
+  padding: 0, 10px, 0, 10px;
+  padding: 0, 50px, 0, 100px;
+}
+
+.mixin4 {
+  background-color: green;
+  background-image: -webkit-gradient(linear, left top, right top, from(red), color-stop(green), to(blue));
+  background-image: linear-gradient(to right, red, green, blue);
+}
+
+.danger, .warning, .alert, .success {
+  width: 200px;
+  height: 200px;
+  border: 1px, solid, #666;
+  border-radius: 25%;
+  opacity: 0.5;
+  background-color: white;
+}
+
+.success {
+  background-color: blue;
+}
+
+.alert {
+  background-color: yellow;
+}
+
+.warning {
+  background-color: orange;
+}
+
+.danger {
+  background-color: red;
+}
+
+.div1 {
+  background-color: #111;
+  display: none;
+}
+
+.opration {
+  width: 11.3333333333px;
+  height: 5px;
+  content: "foo1 foo2";
+  content: foo1foo2;
+}
+
+/* 
+  作者：peter 
+  ps:单号注释不会被保留下来
+*/
+.insert {
+  font: 300px/100px "微软雅黑";
+  color: red;
+}
+
+/* 常见函数见文档：https://sass-lang.com/documentation/modules/ */
+/* 
+  // @for to/through
+  // 不包含后置数
+ */
+#p1 {
+  background-color: #0f0;
+}
+
+#p2 {
+  background-color: #0f0;
+}
+
+/* // 包含后置数 */
+#p1 {
+  background-color: #0f0;
+}
+
+#p2 {
+  background-color: #0f0;
+}
+
+#p3 {
+  background-color: #0f0;
+}
+
+#span1 {
+  background-color: red;
+}
+
+#span2 {
+  background-color: blue;
+}
+
+#span3 {
+  background-color: yellow;
+}
+
+#span4 {
+  background-color: skyblue;
+}
+
+#span5 {
+  background-color: grey;
+}
+
+.col-sm-6 {
+  width: 100;
+}
+
+.col-sm-5 {
+  width: 83.3333333333;
+}
+
+.col-sm-4 {
+  width: 66.6666666667;
+}
+
+.col-sm-3 {
+  width: 50;
+}
+
+.col-sm-2 {
+  width: 33.3333333333;
+}
+
+.col-sm-1 {
+  width: 16.6666666667;
+}
+
+.demo {
+  background-color: blue;
+  background-image: -webkit-gradient(linear, left top, right top, from(red), color-stop(blue), to(yellow));
+  background-image: linear-gradient(to right, red, blue, yellow);
+}
+
+span {
+  width: 100px;
+}
+
+.p1 {
+  color: #000;
+}
+
+.p1 {
+  color: #000;
+}
+.p2 {
+  color: #fff;
+}
+.p2 .p3 {
+  color: #f00;
+}/*# sourceMappingURL=sass.css.map */

@@ -1,0 +1,11 @@
+@use "../sass/foo" as f1;
+
+@mixin mixin {
+  .common {
+    width: 100px;
+    height: 100px;
+    color: f1.$color;
+  }
+}
+
+$width:100px !default;

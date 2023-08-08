@@ -1,0 +1,12 @@
+// 先@forward再@use 避免报错
+@forward "../sass/foo" as f-* hide number;
+@forward "../sass/common" as c-*;
+
+@use "../sass/foo" as f;
+@use "../sass/common" as c;
+
+.transfer{
+  width: c.$width;
+  height: 200px;
+  color: f.$color;
+}
