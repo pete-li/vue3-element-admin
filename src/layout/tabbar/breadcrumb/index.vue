@@ -1,6 +1,6 @@
 <template>
-  <el-icon style="margin-left: 16px" @click="foldHandler">
-    <component :is="isFold ? 'Expand' : 'Fold'"></component>
+  <el-icon class="fold-icon" @click="foldHandler" title="折叠菜单">
+    <component :is="settingStore.isFold ? 'Expand' : 'Fold'"></component>
   </el-icon>
   <el-breadcrumb class="breadcrumb" separator-icon="ArrowRight" separator="/">
     <el-breadcrumb-item :to="{ path: '/' }">
@@ -19,15 +19,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
-let isFold = ref(false)
+import useSettingStore from '@/store/modules/setting'
+let settingStore = useSettingStore()
 const foldHandler = () => {
-  isFold.value = !isFold.value
+  console.log(settingStore)
+  settingStore.isFold = !settingStore.isFold
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.fold-icon {
+  cursor: pointer;
+}
+
 .breadcrumb {
   margin-left: 16px;
 }

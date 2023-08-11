@@ -1,11 +1,13 @@
 <template>
-  <div class="container">
-    <!-- 侧边栏 -->
-    <Slider></Slider>
-    <!-- 顶部导航栏 -->
-    <Tabbar></Tabbar>
-    <!-- 内容展示区域 -->
-    <Main></Main>
+  <div class="layout-container">
+    <el-container>
+      <!-- 侧边栏 -->
+      <Slider></Slider>
+      <!-- 顶部导航栏 -->
+      <Tabbar></Tabbar>
+      <!-- 内容展示区域 -->
+      <Main></Main>
+    </el-container>
   </div>
 </template>
 
@@ -16,7 +18,7 @@ import Main from '@/layout/main/index.vue'
 </script>
 
 <style lang="scss" scoped>
-.container {
+.layout-container {
   width: 100%;
   height: 100vh;
 }

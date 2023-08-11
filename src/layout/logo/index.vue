@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <div class="logo" @click="goHome" title="首页">
     <img :src="setting.logo" alt="logo" />
     <span>{{ setting.title }}</span>
   </div>
@@ -7,6 +7,12 @@
 
 <script setup lang="ts">
 import setting from '@/setting.ts'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const goHome = () => {
+  router.push('/home')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -20,6 +26,10 @@ import setting from '@/setting.ts'
   padding-left: 17px;
   flex-wrap: nowrap; /* 不允许换行 */
   overflow: hidden;
+  cursor: pointer;
+  :hover {
+    opacity: 0.5;
+  }
 
   img {
     display: inline-block;

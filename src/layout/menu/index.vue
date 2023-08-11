@@ -19,7 +19,6 @@
         <el-icon>
           <component :is="item.children[0].meta.icon"></component>
         </el-icon>
-        <template #title></template>
         <span>{{ item.children[0].meta.title }}</span>
       </el-menu-item>
     </template>
@@ -43,9 +42,9 @@ import Menu from '@/layout/menu/index.vue'
 import { useRouter } from 'vue-router'
 
 defineProps(['menuList'])
-const $router = useRouter()
-const goRoute = (path) => {
-  $router.push(path)
+const router = useRouter()
+const goRoute = (path: string) => {
+  router.push(path)
 }
 </script>
 <style lang="scss" scoped></style>

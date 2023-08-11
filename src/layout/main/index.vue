@@ -1,15 +1,19 @@
 <template>
-  <div class="layout_main">
+  <el-main class="layout_main" :class="{ isFold: settingStore.isFold }">
     <!-- 通过插槽把动画效果传递给router-view内部的组件 -->
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />
       </transition>
     </router-view>
-  </div>
+  </el-main>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import useSettingStore from '@/store/modules/setting'
+
+let settingStore = useSettingStore()
+</script>
 
 <style lang="scss" scoped>
 .layout_main {
@@ -21,6 +25,12 @@
   left: $base-menu-width;
   padding: 20px;
   overflow: auto;
+  transition: all 0.5s;
+
+  &.isFold {
+    width: calc(100% - $base-menu-min-width);
+    left: $base-menu-min-width;
+  }
 }
 
 .fade-enter-from {

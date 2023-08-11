@@ -15,14 +15,14 @@ let isLoading = ref(false)
 const loginFormRef = ref()
 
 let userStore = useUserStore()
-let $router = useRouter()
+let router = useRouter()
 
 const loginHandler = async () => {
   try {
     isLoading.value = true
     await loginFormRef.value.validate() //如果没验证过直接抛出错误 如果没有try catch后续代码将不会执行
     await userStore.user_login(userForm)
-    $router.push('/')
+    router.push('/')
     ElNotification({
       type: 'success',
       message: '登录成功!',
