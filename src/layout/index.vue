@@ -3,7 +3,7 @@
     <!-- 侧边栏 -->
     <Slider></Slider>
     <!-- 顶部导航栏 -->
-    <div class="layout_tabbar"></div>
+    <Tabbar></Tabbar>
     <!-- 内容展示区域 -->
     <Main></Main>
   </div>
@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import Slider from '@/layout/slider/index.vue'
+import Tabbar from '@/layout/tabbar/index.vue'
 import Main from '@/layout/main/index.vue'
 </script>
 
@@ -18,14 +19,5 @@ import Main from '@/layout/main/index.vue'
 .container {
   width: 100%;
   height: 100vh;
-
-  .layout_tabbar {
-    position: fixed;
-    width: calc(100% - $base-menu-width);
-    height: $base-tabbar-height;
-    background-color: aquamarine;
-    top: 0;
-    left: $base-menu-width;
-  }
 }
 </style>

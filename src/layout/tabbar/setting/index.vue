@@ -1,0 +1,38 @@
+<template>
+  <el-button :icon="Refresh" size="small" circle />
+  <el-button :icon="FullScreen" size="small" circle />
+  <el-button :icon="Setting" size="small" circle />
+
+  <img class="avatar" src="../../../../public/logo.png" alt="avatar" />
+  <el-dropdown>
+    <span class="el-dropdown-link">
+      用户名
+      <el-icon class="el-icon--right">
+        <arrow-down />
+      </el-icon>
+    </span>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item>退出登录</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+</template>
+
+<script setup lang="ts">
+import {
+  Refresh,
+  Setting,
+  FullScreen,
+  ArrowDown,
+} from '@element-plus/icons-vue'
+</script>
+
+<style lang="scss" scoped>
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 20px;
+  margin: 0 12px;
+}
+</style>
