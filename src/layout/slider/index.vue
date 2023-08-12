@@ -6,9 +6,11 @@
         class="menu-container"
         background-color="#001529"
         text-color="white"
-        default-active="/"
+        :default-active="$route.path"
         :collapse="settingStore.isFold"
+        router
       >
+        <!-- 以上的router表示启用该模式会在激活导航时以 index 作为 path 进行路由跳转 -->
         <Menu :menu-list="menuList"></Menu>
       </el-menu>
     </el-scrollbar>
@@ -21,6 +23,7 @@ import Menu from '@/layout/menu/index.vue'
 
 import useUserStore from '@/store/modules/user'
 import useSettingStore from '@/store/modules/setting'
+
 let userStore = useUserStore()
 let settingStore = useSettingStore()
 let menuList = userStore.menuRoutes

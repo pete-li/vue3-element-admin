@@ -11,12 +11,11 @@ export const constantRoutes = [
   },
   {
     path: '/',
-    name: 'home',
+    name: 'layout',
     component: () => import('@/layout/index.vue'),
     meta: {
-      title: '首页',
+      title: '',
       hidden: false,
-      icon: 'HomeFilled',
     },
     redirect: '/home',
     children: [
@@ -98,7 +97,7 @@ export const constantRoutes = [
       {
         path: '/product/trademark',
         component: () => import('@/views/product/trademark/index.vue'),
-        name: 'Trademark',
+        name: 'trademark',
         meta: {
           title: '品牌管理',
           icon: 'ShoppingCart',
@@ -108,7 +107,7 @@ export const constantRoutes = [
       {
         path: '/product/attr',
         component: () => import('@/views/product/attr/index.vue'),
-        name: 'Attr',
+        name: 'attr',
         meta: {
           title: '属性管理',
           icon: 'Management',
