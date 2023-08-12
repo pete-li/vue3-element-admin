@@ -11,13 +11,19 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'layout',
+}
+</script>
+
 <script setup lang="ts">
 import Slider from '@/layout/slider/index.vue'
 import Tabbar from '@/layout/tabbar/index.vue'
 import Main from '@/layout/main/index.vue'
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped name="layout">
 .layout-container {
   width: 100%;
   height: 100vh;

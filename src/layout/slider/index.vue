@@ -44,3 +44,9 @@ let menuList = userStore.menuRoutes
   }
 }
 </style>
+
+<script lang="ts">
+export default {
+  name: 'slider',
+}
+</script>

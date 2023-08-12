@@ -1,5 +1,5 @@
 <template>
-  <el-button :icon="Refresh" size="small" circle />
+  <el-button :icon="Refresh" size="small" @click="refreshHandler" circle />
   <el-button :icon="FullScreen" size="small" circle />
   <el-button :icon="Setting" size="small" circle />
 
@@ -26,6 +26,12 @@ import {
   FullScreen,
   ArrowDown,
 } from '@element-plus/icons-vue'
+import useSettingStore from '@/store/modules/setting'
+const settingStore = useSettingStore()
+
+const refreshHandler = () => {
+  settingStore.isRefresh = !settingStore.isRefresh
+}
 </script>
 
 <style lang="scss" scoped>
@@ -36,3 +42,9 @@ import {
   margin: 0 12px;
 }
 </style>
+
+<script lang="ts">
+export default {
+  name: 'setting',
+}
+</script>

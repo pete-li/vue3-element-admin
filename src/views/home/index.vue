@@ -5,3 +5,9 @@
 <script setup lang="ts"></script>
 
 <style></style>
+
+<script lang="ts">
+export default {
+  name: 'home',
+}
+</script>

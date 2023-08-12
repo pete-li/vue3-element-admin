@@ -1,9 +1,9 @@
 <template>
   <el-main class="layout_main" :class="{ isFold: settingStore.isFold }">
-    <!-- 通过插槽把动画效果传递给router-view内部的组件 -->
+    <!-- 此处用作用域插槽将组件传递给父组件供程序员使用 -->
     <router-view v-slot="{ Component }">
       <transition name="fade">
-        <component :is="Component" />
+        <component :is="Component" v-if="!settingStore.isRefresh" />
       </transition>
     </router-view>
   </el-main>
@@ -11,8 +11,18 @@
 
 <script setup lang="ts">
 import useSettingStore from '@/store/modules/setting'
+import { nextTick, watch } from 'vue'
 
 let settingStore = useSettingStore()
+watch(
+  () => settingStore.isRefresh,
+  () => {
+    nextTick(() => {
+      //在下一次dom渲染更新的时候，也就是unmounted的时候 再让v-if开启
+      settingStore.isRefresh = false
+    })
+  },
+)
 </script>
 
 <style lang="scss" scoped>
@@ -46,3 +56,9 @@ let settingStore = useSettingStore()
   transform: scale(1);
 }
 </style>
+
+<script lang="ts">
+export default {
+  name: 'mainPage',
+}
+</script>

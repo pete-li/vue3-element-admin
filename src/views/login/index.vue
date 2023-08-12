@@ -150,3 +150,9 @@ const rules = reactive({
   }
 }
 </style>
+
+<script lang="ts">
+export default {
+  name: 'login',
+}
+</script>

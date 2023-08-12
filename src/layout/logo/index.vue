@@ -48,3 +48,9 @@ const goHome = () => {
   }
 }
 </style>
+
+<script lang="ts">
+export default {
+  name: 'logo',
+}
+</script>

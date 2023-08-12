@@ -43,3 +43,9 @@ let settingStore = useSettingStore()
   }
 }
 </style>
+
+<script lang="ts">
+export default {
+  name: 'tabbar',
+}
+</script>

@@ -28,6 +28,12 @@ const foldHandler = () => {
 }
 </script>
 
+<script lang="ts">
+export default {
+  name: 'breadcrumb',
+}
+</script>
+
 <style lang="scss" scoped>
 .fold-icon {
   cursor: pointer;
