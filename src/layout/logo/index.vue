@@ -1,5 +1,5 @@
 <template>
-  <div class="logo" @click="goHome" title="首页">
+  <div class="logo" @click="goHome">
     <img :src="setting.logo" alt="logo" />
     <span>{{ setting.title }}</span>
   </div>
@@ -27,9 +27,6 @@ const goHome = () => {
   flex-wrap: nowrap; /* 不允许换行 */
   overflow: hidden;
   cursor: pointer;
-  :hover {
-    opacity: 0.5;
-  }
 
   img {
     display: inline-block;

@@ -6,7 +6,9 @@
         <el-icon>
           <component :is="item.meta.icon"></component>
         </el-icon>
-        <span>{{ item.meta.title }}</span>
+        <template #title>
+          <span>{{ item.meta.title }}</span>
+        </template>
       </el-menu-item>
     </template>
     <!-- 有子路由且只有一个 注意此处渲染的是子路由别渲染父路由 -->
@@ -18,7 +20,9 @@
         <el-icon>
           <component :is="item.children[0].meta.icon"></component>
         </el-icon>
-        <span>{{ item.children[0].meta.title }}</span>
+        <template #title>
+          <span>{{ item.children[0].meta.title }}</span>
+        </template>
       </el-menu-item>
     </template>
     <!-- 有子路由且超过一个 -->

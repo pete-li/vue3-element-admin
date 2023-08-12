@@ -1,6 +1,6 @@
 <template>
   <!-- 折叠侧边栏图标 -->
-  <el-icon class="fold-icon" @click="foldHandler" title="折叠">
+  <el-icon class="fold-icon" @click="foldHandler">
     <component :is="settingStore.isFold ? 'Expand' : 'Fold'"></component>
   </el-icon>
   <!-- 面包屑 -->
