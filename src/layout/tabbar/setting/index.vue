@@ -1,6 +1,11 @@
 <template>
   <el-button :icon="Refresh" size="small" @click="refreshHandler" circle />
-  <el-button :icon="FullScreen" size="small" circle />
+  <el-button
+    :icon="FullScreen"
+    size="small"
+    @click="fullScreenHandler"
+    circle
+  />
   <el-button :icon="Setting" size="small" circle />
 
   <img class="avatar" src="../../../../public/logo.png" alt="avatar" />
@@ -31,6 +36,15 @@ const settingStore = useSettingStore()
 
 const refreshHandler = () => {
   settingStore.isRefresh = !settingStore.isRefresh
+}
+
+const fullScreenHandler = () => {
+  let isFullScreen = document.fullscreenElement //如果没有这个元素说明目前没有全屏
+  if (!isFullScreen) {
+    document.documentElement.requestFullscreen()
+  } else {
+    document.exitFullscreen()
+  }
 }
 </script>
 

@@ -4,7 +4,6 @@ const useSettingStore = defineStore('Setting', {
     return {
       isFold: false,
       isRefresh: false,
-      isFullScreen: false,
     }
   },
   actions: {},
