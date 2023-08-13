@@ -3,12 +3,12 @@ import { reactive, ref } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
 import useUserStore from '@/store/modules/user'
 import { ElNotification } from 'element-plus'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { getTime } from '@/utils/getTime'
 
 let userForm = reactive({
   username: 'admin',
-  password: '123456',
+  password: 'atguigu123',
 })
 
 let isLoading = ref(false)
@@ -16,13 +16,17 @@ const loginFormRef = ref()
 
 let userStore = useUserStore()
 let router = useRouter()
+const route = useRoute()
 
 const loginHandler = async () => {
   try {
     isLoading.value = true
     await loginFormRef.value.validate() //如果没验证过直接抛出错误 如果没有try catch后续代码将不会执行
     await userStore.user_login(userForm)
-    router.push('/')
+
+    const redirect = route.query.redirect as string
+
+    router.push({ path: redirect || '/' })
     ElNotification({
       type: 'success',
       message: '登录成功!',

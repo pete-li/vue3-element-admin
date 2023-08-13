@@ -8,17 +8,17 @@
   />
   <el-button :icon="Setting" size="small" circle />
 
-  <img class="avatar" src="../../../../public/logo.png" alt="avatar" />
+  <img class="avatar" :src="userStore.avatar" alt="avatar" />
   <el-dropdown>
     <span class="el-dropdown-link">
-      用户名
+      {{ userStore.username }}
       <el-icon class="el-icon--right">
         <arrow-down />
       </el-icon>
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item>退出登录</el-dropdown-item>
+        <el-dropdown-item @click="logoutHandler">退出登录</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -32,7 +32,13 @@ import {
   ArrowDown,
 } from '@element-plus/icons-vue'
 import useSettingStore from '@/store/modules/setting'
+import useUserStore from '@/store/modules/user'
+import router from '@/router'
+import { useRoute } from 'vue-router'
+
 const settingStore = useSettingStore()
+const userStore = useUserStore()
+const route = useRoute()
 
 const refreshHandler = () => {
   settingStore.isRefresh = !settingStore.isRefresh
@@ -46,12 +52,17 @@ const fullScreenHandler = () => {
     document.exitFullscreen()
   }
 }
+
+const logoutHandler = async () => {
+  await userStore.user_logout()
+  router.push({ path: '/login', query: { redirect: route.path } })
+}
 </script>
 
 <style lang="scss" scoped>
 .avatar {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   border-radius: 20px;
   margin: 0 12px;
 }

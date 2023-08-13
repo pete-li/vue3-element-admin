@@ -16,6 +16,7 @@ request.interceptors.request.use((config) => {
 // 响应拦截器
 request.interceptors.response.use(
   (res) => {
+    console.log(res.data)
     return res.data //简化数据
   },
   (error) => {
