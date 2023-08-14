@@ -30,7 +30,6 @@ watch(
   position: absolute;
   width: calc(100% - $base-menu-width);
   height: calc(100% - $base-tabbar-height);
-  background-color: skyblue;
   top: $base-tabbar-height;
   left: $base-menu-width;
   padding: 20px;

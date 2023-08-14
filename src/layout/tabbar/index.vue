@@ -27,6 +27,8 @@ let settingStore = useSettingStore()
   top: 0;
   left: $base-menu-width;
   transition: all 0.5s;
+  box-shadow: #00000026 0 3px 3px;
+  z-index: 999;
 
   &.isFold {
     width: calc(100% - $base-menu-min-width);
