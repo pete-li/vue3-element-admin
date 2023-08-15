@@ -100,7 +100,7 @@ export const constantRoutes = [
         name: 'trademark',
         meta: {
           title: '品牌管理',
-          icon: 'ShoppingCart',
+          icon: 'Shop',
           hidden: false,
         },
       },

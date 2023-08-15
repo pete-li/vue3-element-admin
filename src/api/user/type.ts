@@ -1,15 +1,9 @@
+import basicResponse from '../base_type'
+
 // 登录表单信息
 export interface loginInfoForm {
   username: string
   password: string
-}
-
-// 响应数据的基础格式
-interface basicResponse {
-  code: number
-  data: any
-  message: string
-  ok: boolean
 }
 
 // 登录响应数据格式

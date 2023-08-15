@@ -9,6 +9,7 @@ const request = axios.create({
 
 // 请求拦截器
 request.interceptors.request.use((config) => {
+  console.log('请求配置：', config)
   config.headers.token = GET_TOKEN()
   return config
 })
@@ -16,6 +17,7 @@ request.interceptors.request.use((config) => {
 // 响应拦截器
 request.interceptors.response.use(
   (res) => {
+    console.log(`响应数据：`, res.data)
     return res.data //简化数据
   },
   (error) => {
