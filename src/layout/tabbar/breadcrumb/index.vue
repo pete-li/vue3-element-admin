@@ -25,6 +25,7 @@ import useSettingStore from '@/store/modules/setting'
 let settingStore = useSettingStore()
 const foldHandler = () => {
   settingStore.isFold = !settingStore.isFold
+  localStorage.setItem('isFold', settingStore.isFold.toString())
 }
 </script>
 
