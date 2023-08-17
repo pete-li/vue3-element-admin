@@ -40,6 +40,7 @@ const loginHandler = async () => {
   }
   isLoading.value = false
 }
+
 // rule是表单中对应的规则 value是输入框中的值  callback是放行回调函数
 const validatorUsername = (_rule: any, value: any, callback: any) => {
   if (value === '') {

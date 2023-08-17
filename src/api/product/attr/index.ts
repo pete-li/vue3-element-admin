@@ -26,10 +26,15 @@ export const reqAttrInfoList = (
   category1Id: number | string,
   category2Id: number | string,
   category3Id: number | string,
-) =>
-  request.get<any, AttrInfoResData>(
+) => {
+  if (!category1Id || !category2Id || !category3Id)
+    return Promise.reject<Promise<AttrInfoResData>>(
+      new Error('分类ID为必填项！'),
+    )
+  return request.get<any, AttrInfoResData>(
     `${API.GET_ATTR_INFO}/${category1Id}/${category2Id}/${category3Id}`,
   )
+}
 
 // 添加或修改属性
 export const reqAddOrUpdateAttrInfo = (data: AttrInfo) =>

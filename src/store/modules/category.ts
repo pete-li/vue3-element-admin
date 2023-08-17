@@ -38,7 +38,7 @@ export const useCategoryStore = defineStore('Category', {
         this.c3ResArr = res.data
       }
     },
-    async getAttrInfoList() {
+    async refreshAttrInfoList() {
       const res = await reqAttrInfoList(this.c1Id, this.c2Id, this.c3Id)
       if (res.code === 200) {
         this.attrInfoList = res.data

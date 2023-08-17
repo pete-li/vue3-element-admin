@@ -1,15 +1,21 @@
 <template>
   <div>
     <!-- 三级分类 -->
-    <category :ctgForm="ctgForm"></category>
+    <category :scene="scene"></category>
 
     <!-- 属性CURD -->
     <el-card class="attr" style="margin-top: 32px">
-      <!-- 表格场景 -->
+      <!-- 表格展示场景 -->
       <div class="table-scene" v-show="scene === 0">
-        <el-button type="primary" :icon="Plus" @click="scene = 1">
+        <el-button
+          type="primary"
+          :icon="Plus"
+          @click="addAttrInfoHandler"
+          :disabled="!categoryStore.c3Id"
+        >
           添加平台属性
         </el-button>
+        <!-- 展示场景表格 -->
         <el-table
           style="margin: 16px 0"
           :data="categoryStore.attrInfoList"
@@ -23,7 +29,6 @@
           />
           <el-table-column prop="attrName" label="属性名称" />
           <el-table-column label="属性值名称">
-            <!-- 插槽会传值scope 其中有index和row数据通过解构赋值获得 -->
             <template #default="{ row }">
               <el-tag
                 style="margin: 3px"
@@ -46,7 +51,7 @@
                 :title="`确定要删除“${row.attrName}”吗?`"
                 width="250px"
                 icon="delete"
-                @confirm="deleteAttr(row.id)"
+                @confirm="deleteAttrInfo(row.id)"
               >
                 <template #reference>
                   <el-button
@@ -62,17 +67,26 @@
       </div>
       <!-- 增改场景 -->
       <div class="add-update-scene" v-show="scene === 1">
-        <el-form inline>
-          <el-form-item label="属性名称">
+        <el-form ref="attrFormRuleRef" :model="attrInfoForm" :rules="rules">
+          <el-form-item prop="attrName" label="属性名称">
             <el-input
+              style="width: 180px"
+              :ref="(el:HTMLInputElement )=> attrNameInputRef = el"
               placeholder="请输入属性名称"
               v-model="attrInfoForm.attrName"
+              clearable
             ></el-input>
           </el-form-item>
         </el-form>
-        <el-button type="primary" :icon="Plus" @click="scene = 1">
+        <el-button
+          type="primary"
+          :icon="Plus"
+          @click="addAttrValue"
+          style="margin: 12px 0"
+        >
           添加属性值
         </el-button>
+        <!-- 属性值表格 -->
         <el-table
           style="margin: 16px 0"
           :data="attrInfoForm.attrValueList"
@@ -84,20 +98,35 @@
             width="80"
             align="center"
           />
-          <el-table-column prop="valueName" label="属性值名称" />
+          <el-table-column label="属性值名称">
+            <template #default="{ row, $index }">
+              <el-input
+                v-if="row.isEditMode"
+                placeholder="请输入属性值名称"
+                v-model="row.valueName"
+                @blur="toggleToLook(row, $index)"
+                :ref="(el:HTMLInputElement )=> inputRefArr[$index] = el"
+                clearable
+              ></el-input>
+              <div v-else @click="toggleToEdit(row, $index)">
+                {{ row.valueName }}
+              </div>
+            </template>
+          </el-table-column>
+
           <el-table-column label="属性值操作">
-            <template #default="{ row }">
+            <template #default="{ $index }">
               <el-button
                 type="danger"
                 size="small"
                 icon="Delete"
-                @click="row.id"
+                @click="attrInfoForm.attrValueList.splice($index, 1)"
               ></el-button>
             </template>
           </el-table-column>
         </el-table>
-        <el-button type="primary" size="default" @click="scene = 0">
-          保存
+        <el-button type="primary" size="default" @click="saveAttrInfo">
+          {{ attrInfoForm.id ? '修改' : '添加' }}
         </el-button>
         <el-button size="default" @click="scene = 0">取消</el-button>
       </div>
@@ -106,37 +135,136 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { nextTick, reactive, ref } from 'vue'
 import { Plus } from '@element-plus/icons-vue'
 import { useCategoryStore } from '@/store/modules/category'
-import { reqDeleteAttrInfo } from '@/api/product/attr/index'
+import {
+  reqAddOrUpdateAttrInfo,
+  reqDeleteAttrInfo,
+} from '@/api/product/attr/index'
 import { ElMessage } from 'element-plus'
-import { AttrInfo } from '@/api/product/attr/type'
+import { AttrInfo, AttrValue } from '@/api/product/attr/type'
 
-const scene = ref(0) //场景值 0：表格场景 1：增改场景
+const scene = ref(0) // 场景值 0：表格场景 1：增改场景
+const categoryStore = useCategoryStore()
+const inputRefArr = reactive<HTMLInputElement[]>([]) // 输入框实例数组
+const attrNameInputRef = ref<HTMLInputElement>()
 let attrInfoForm = reactive<AttrInfo>({
   attrName: '',
   attrValueList: [],
   categoryId: 0,
   categoryLevel: 3,
 })
-const categoryStore = useCategoryStore()
 
-const ctgForm = reactive({ c1: '' })
-
-const editAttrHandler = (attrInfo: AttrInfo) => {
-  attrInfoForm = attrInfo
+// 处理点击添加属性信息按钮
+const addAttrInfoHandler = () => {
+  Object.assign(attrInfoForm, {
+    attrName: '',
+    attrValueList: [],
+    categoryId: categoryStore.c3Id,
+    categoryLevel: 3,
+  })
   scene.value = 1
 }
 
-const deleteAttr = async (attrId: number) => {
+// 保存属性信息
+const saveAttrInfo = async () => {
+  try {
+    await attrFormRuleRef.value.validate()
+    let res = await reqAddOrUpdateAttrInfo(attrInfoForm)
+    if (res.code === 200) {
+      ElMessage({
+        type: 'success',
+        message: attrInfoForm.id ? '修改成功！' : '添加成功！',
+      })
+      await categoryStore.refreshAttrInfoList()
+      scene.value = 0
+    } else {
+      ElMessage({
+        type: 'error',
+        message: attrInfoForm.id ? '修改失败！' : '添加失败！',
+      })
+    }
+  } catch (error: any) {
+    ElMessage({
+      type: 'error',
+      message: error.attrName[0].message,
+    })
+  }
+}
+
+// 按下修改属性按钮
+const editAttrHandler = (attrInfo: AttrInfo) => {
+  // assign是浅拷贝 要合并的目标对象是复杂类型嵌套，需要深拷贝
+  // 注意Object.assign不会改变attrInfoForm的地址，而直接赋值JSON.parse会改变指针指向
+  Object.assign(attrInfoForm, JSON.parse(JSON.stringify(attrInfo)))
+  scene.value = 1
+  nextTick(() => {
+    attrNameInputRef.value?.focus()
+  })
+}
+
+// 切换到修改模式
+const toggleToEdit = (row: AttrValue, index: number) => {
+  row.isEditMode = true
+  nextTick(() => {
+    inputRefArr[index]?.focus()
+  })
+  /* 如果没有nextTick，代码会直接运行下去，此时还没渲染另一个组件可见度
+     因为使用的是v-if输入框是销毁状态 此时输入框元素还没造出来
+  */
+}
+
+// 切换到展示模式(在丧失焦点的时候)
+const toggleToLook = (row: AttrValue, index: number) => {
+  let inputContent = row.valueName
+  if (inputContent.trim() === '') {
+    ElMessage({
+      type: 'error',
+      message: '属性值不能为空!',
+    })
+    attrInfoForm.attrValueList.splice(index, 1)
+  }
+
+  // find方法遍历数组中元素是否满足条件 不满足条件返回undefined
+  let isRepeat = attrInfoForm.attrValueList.find((item) => {
+    //去重先剔除自己
+    if (item !== row) {
+      // 一旦找到了相同说明除了本身之外有重复的元素 返回对应的值
+      return item.valueName === inputContent
+    }
+  })
+
+  if (isRepeat) {
+    ElMessage({
+      type: 'error',
+      message: '属性值不能重复!',
+    })
+    attrInfoForm.attrValueList.splice(index, 1)
+  }
+  row.isEditMode = false
+}
+
+// 添加属性值
+const addAttrValue = () => {
+  attrInfoForm.attrValueList.push({
+    valueName: '',
+    isEditMode: true,
+  })
+  nextTick(() => {
+    inputRefArr[inputRefArr.length - 1]?.focus()
+  })
+}
+
+// 删除属性信息
+const deleteAttrInfo = async (attrId: number) => {
   const res = await reqDeleteAttrInfo(attrId)
   if (res.code === 200) {
     ElMessage({
       type: 'success',
       message: '删除成功',
     })
-    categoryStore.getAttrInfoList()
+    await categoryStore.refreshAttrInfoList()
   } else {
     ElMessage({
       type: 'error',
@@ -144,6 +272,18 @@ const deleteAttr = async (attrId: number) => {
     })
   }
 }
+
+// 表单验证
+const attrFormRuleRef = ref()
+const rules = reactive({
+  attrName: [
+    {
+      required: true,
+      message: '属性名称不能为空！',
+      trigger: 'blur',
+    },
+  ],
+})
 </script>
 
 <style lang="scss" scoped></style>
