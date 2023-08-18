@@ -1,0 +1,197 @@
+[33mcommit e3e929fba43ff1b4491726d39215cf63dd254cc6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Fri Aug 18 02:03:59 2023 +0800
+
+    feat: attr page Add && Update
+
+[33mcommit c470b865b6812df1f087c4362d5b591f3bbcd9b1[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Wed Aug 16 23:20:26 2023 +0800
+
+    feat: attr page Read && Delete
+
+[33mcommit 302353c9fbf02b599cf2e6d1a338fcda1b8ecb11[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Wed Aug 16 16:03:20 2023 +0800
+
+    feat: attr static page
+
+[33mcommit 1a2913261cfc5eb15aa33b3c01ac0ea0d78eb996[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Tue Aug 15 20:26:38 2023 +0800
+
+    feat: trademark CURD
+
+[33mcommit ddb8efa53fb9ef2e2dcfbf51e92a70adab0e43d6[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Tue Aug 15 03:13:46 2023 +0800
+
+    feat: trademark static page
+
+[33mcommit 88fbe208e3bd846c99594e20678af698f0c69da1[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Tue Aug 15 03:13:12 2023 +0800
+
+    feat: trademark static page
+
+[33mcommit f282299ef47a5e14b3710622985063ec4aa0f2bc[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sun Aug 13 20:20:27 2023 +0800
+
+    feat: true api replaces mock && router permission
+
+[33mcommit 8d44fae5482282a1a308cb91989c15c5ef6ac47c[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sun Aug 13 20:03:56 2023 +0800
+
+    feat: true api replaces mock && router permission
+
+[33mcommit 3545b54bf26ba2dca9771ebfdf15df9f15c76032[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sun Aug 13 01:17:17 2023 +0800
+
+    feat: fullscreen
+
+[33mcommit 22936278f7817d9001518ccf087f9ffbf6447d5a[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sun Aug 13 00:59:29 2023 +0800
+
+    feat: refresh && define components name
+
+[33mcommit a152b02edf4b3619ac44a2801f454572c5e1c19e[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sat Aug 12 23:43:15 2023 +0800
+
+    feat: dynamic breadcrumb && nprocess
+
+[33mcommit 59372145720618f95e3ea49218c62e7c683d4529[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sat Aug 12 23:30:53 2023 +0800
+
+    feat: dynamic breadcrumb && nprocess
+
+[33mcommit 7c70fb8f27a23185743c91b2d3b616b4743c4770[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sat Aug 12 00:21:34 2023 +0800
+
+    feat: fold side bar
+
+[33mcommit a7c361d81733a1865ded7d0b2e7d800001d17e9c[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Fri Aug 11 22:23:06 2023 +0800
+
+    feat: tabbar static page
+
+[33mcommit 581e4a4d560831731147fe8fef1239b5b31c8b76[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Wed Aug 9 23:45:16 2023 +0800
+
+    feat: recursive slider component && route display page
+
+[33mcommit 85c6b977b4fec0d412b0910da4ff6134d88ca5d8[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Wed Aug 9 23:44:27 2023 +0800
+
+    feat: recursive slider component && route display page
+
+[33mcommit f09fcd9f655716e689370391f124c25d4919a307[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Tue Aug 8 23:18:07 2023 +0800
+
+    feat: logo component
+
+[33mcommit a800c722e5b5a2bb9cef6c8da4bf5e030355dd62[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Tue Aug 8 23:17:15 2023 +0800
+
+    feat: logo component
+
+[33mcommit a45a5d29193973a19f1e7b6be442ecab18b33f81[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Tue Aug 8 16:06:36 2023 +0800
+
+    feat: layout
+
+[33mcommit 3eb24ccf01510ef0882ea20a087c4b5029232d49[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sun Aug 6 22:46:08 2023 +0800
+
+    feat: login form validation
+
+[33mcommit a163ed476e9cdd965a696baa49d61c9cdf9359fd[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sun Aug 6 21:14:47 2023 +0800
+
+    feat: getTime tips
+
+[33mcommit ad6d318511b23b60de122e81424f084ab6bce193[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sun Aug 6 00:46:47 2023 +0800
+
+    feat: encapsulate login business
+
+[33mcommit b888df0abed5aa42e2d2aa9390a85b9c0958b285[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Sat Aug 5 01:23:10 2023 +0800
+
+    feat: encapsulate axios API && unify interface
+
+[33mcommit 7ce4b8e0dc1cd60f801aa297487851136c252fec[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Fri Aug 4 21:00:00 2023 +0800
+
+    feat: mock vite plugin config
+
+[33mcommit f6b71742d8b251e4a0a67142eaf19c43cdcb37f1[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Fri Aug 4 00:49:30 2023 +0800
+
+    feat: sass preprocessor config
+
+[33mcommit 647c2dff42a5d8beb255766f4d872def65ffdcef[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Fri Aug 4 00:47:25 2023 +0800
+
+    feat: sass preprocessor config
+
+[33mcommit 1af70886e14c658a186ebb2932e72923c43bd91d[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Fri Aug 4 00:26:53 2023 +0800
+
+    feat: register global Components
+
+[33mcommit 089dc657cb9be8596cd04f5e4853a519cb1111e4[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Thu Aug 3 23:04:55 2023 +0800
+
+    feat: svg icon config
+
+[33mcommit 862074a95a48e5ed3b2a84e743df3481ec8a377d[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Tue Aug 1 00:13:54 2023 +0800
+
+    feat: url && env config
+
+[33mcommit 0c3cf57230ea129d575914730fbd35f8ad99386a[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Mon Jul 31 22:23:07 2023 +0800
+
+    feat: introducing element plus
+
+[33mcommit 1e727546d27cdce1de5d9fed0b9dd9593504d87f[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Mon Jul 31 19:26:34 2023 +0800
+
+    feat:project init && config
+
+[33mcommit 714ec40e3726b1f7bf52813d4cb5c425108bd63f[m
+Author: Li_Peter <505175463@qq.com>
+Date:   Mon Jul 31 19:25:56 2023 +0800
+
+    feat:project init && config
+
+[33mcommit 56b00607103abdd4fd2aab6c06e8e946e075256c[m
+Author: peter_li <46208115+pete-li@users.noreply.github.com>
+Date:   Mon Jul 31 15:46:19 2023 +0800
+
+    Initial commit

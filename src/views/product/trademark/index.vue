@@ -78,6 +78,7 @@
               v-if="trademarkForm.logoUrl"
               :src="trademarkForm.logoUrl"
               class="avatar"
+              alt="avatar"
             />
             <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
           </el-upload>
@@ -141,7 +142,7 @@ const confirm = async () => {
         message: trademarkForm.id ? '修改品牌成功！' : '添加品牌成功！',
       })
       dialogVisible.value = false
-      refreshTMData()
+      await refreshTMData()
     } else {
       ElMessage({
         type: 'error',
@@ -178,7 +179,7 @@ const deleteTradeMark = async (id: number) => {
       message: '删除成功！',
     })
     dialogVisible.value = false
-    refreshTMData()
+    await refreshTMData()
   } else {
     ElMessage({
       type: 'error',

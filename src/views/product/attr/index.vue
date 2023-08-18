@@ -2,7 +2,6 @@
   <div>
     <!-- 三级分类 -->
     <category :scene="scene"></category>
-
     <!-- 属性CURD -->
     <el-card class="attr" style="margin-top: 32px">
       <!-- 表格展示场景 -->
@@ -135,13 +134,10 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, reactive, ref } from 'vue'
+import { nextTick, onBeforeUnmount, reactive, ref } from 'vue'
 import { Plus } from '@element-plus/icons-vue'
 import { useCategoryStore } from '@/store/modules/category'
-import {
-  reqAddOrUpdateAttrInfo,
-  reqDeleteAttrInfo,
-} from '@/api/product/attr/index'
+import { reqAddOrUpdateAttrInfo, reqDeleteAttrInfo } from '@/api/product/attr'
 import { ElMessage } from 'element-plus'
 import { AttrInfo, AttrValue } from '@/api/product/attr/type'
 
@@ -283,6 +279,11 @@ const rules = reactive({
       trigger: 'blur',
     },
   ],
+})
+
+onBeforeUnmount(() => {
+  // category是公共组件，卸载前重置仓库数据
+  categoryStore.$reset()
 })
 </script>
 
