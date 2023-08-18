@@ -1,0 +1,9 @@
+{
+  "include": ["./src/**/*", "./src/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

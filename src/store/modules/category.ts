@@ -1,11 +1,6 @@
-import {
-  reqAttrInfoList,
-  reqGetC1,
-  reqGetC2,
-  reqGetC3,
-} from '@/api/product/attr'
+import { reqGetC1, reqGetC2, reqGetC3 } from '@/api/product/attr'
 import { defineStore } from 'pinia'
-import { AttrInfo, Category } from '@/api/product/attr/type'
+import { Category } from '@/api/product/attr/type'
 
 export const useCategoryStore = defineStore('Category', {
   state: (): CategoryState => {
@@ -16,7 +11,6 @@ export const useCategoryStore = defineStore('Category', {
       c1ResArr: [],
       c2ResArr: [],
       c3ResArr: [],
-      attrInfoList: [],
     }
   },
   actions: {
@@ -38,12 +32,6 @@ export const useCategoryStore = defineStore('Category', {
         this.c3ResArr = res.data
       }
     },
-    async refreshAttrInfoList() {
-      const res = await reqAttrInfoList(this.c1Id, this.c2Id, this.c3Id)
-      if (res.code === 200) {
-        this.attrInfoList = res.data
-      }
-    },
   },
   getters: {},
 })
@@ -55,5 +43,4 @@ interface CategoryState {
   c1ResArr: Category[]
   c2ResArr: Category[]
   c3ResArr: Category[]
-  attrInfoList: AttrInfo[]
 }

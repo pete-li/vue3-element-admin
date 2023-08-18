@@ -21,9 +21,16 @@ request.interceptors.response.use(
     return res.data //简化数据
   },
   (error) => {
-    let msg = ''
-    // if (!error.response) console.error(error)
+    console.error(error)
+    if (error.code === 'ECONNABORTED') {
+      ElMessage({
+        type: 'error',
+        message: '连接超时！',
+      })
+      return Promise.reject(error)
+    }
     if (!error.response) return Promise.reject(error)
+    let msg
     switch (error.response.status) {
       case 401:
         msg = 'token过期!'
@@ -47,5 +54,4 @@ request.interceptors.response.use(
     return Promise.reject(error)
   },
 )
-
 export default request

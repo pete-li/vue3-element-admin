@@ -53,7 +53,6 @@
 <script setup lang="ts">
 import { useCategoryStore } from '@/store/modules/category'
 import { onMounted } from 'vue'
-import { ElMessage } from 'element-plus'
 
 const categoryStore = useCategoryStore()
 
@@ -64,32 +63,26 @@ onMounted(() => {
 const changeHandler = async (cLevel: number) => {
   switch (cLevel) {
     case 1:
+      emit('c1Change')
       categoryStore.c2Id = ''
       categoryStore.c3Id = ''
       categoryStore.c3ResArr = []
-      categoryStore.attrInfoList = []
       await categoryStore.getC2()
       break
     case 2:
+      emit('c1Change')
       categoryStore.c3Id = ''
-      categoryStore.attrInfoList = []
       await categoryStore.getC3()
       break
     case 3:
-      try {
-        await categoryStore.refreshAttrInfoList()
-      } catch (error: any) {
-        // 此处服务器对某些分类会超时 做特别处理
-        categoryStore.c3Id = ''
-        ElMessage({
-          type: 'error',
-          message: error.message,
-        })
-      }
+      emit('c3Change')
+      // 由于这是一个公共组件，不同页面可能会根据c3id发送不同的请求
+      // 因此不能在这里做统一处理 应在每个使用的页面发送各自的请求
       break
   }
 }
 defineProps(['scene'])
+const emit = defineEmits(['c1Change', 'c2Change', 'c3Change'])
 </script>
 
 <script lang="ts">

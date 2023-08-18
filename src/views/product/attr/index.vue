@@ -1,8 +1,11 @@
 <template>
   <div>
     <!-- 三级分类 -->
-    <category :scene="scene"></category>
-
+    <category
+      :scene="scene"
+      @c1-change="attrInfoList = []"
+      @c2-change="attrInfoList = []"
+    ></category>
     <!-- 属性CURD -->
     <el-card class="attr" style="margin-top: 32px">
       <!-- 表格展示场景 -->
@@ -16,11 +19,7 @@
           添加平台属性
         </el-button>
         <!-- 展示场景表格 -->
-        <el-table
-          style="margin: 16px 0"
-          :data="categoryStore.attrInfoList"
-          border
-        >
+        <el-table style="margin: 16px 0" :data="attrInfoList" border>
           <el-table-column
             type="index"
             label="序号"
@@ -135,26 +134,52 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, reactive, ref } from 'vue'
+import { nextTick, onBeforeUnmount, reactive, ref, watch } from 'vue'
 import { Plus } from '@element-plus/icons-vue'
 import { useCategoryStore } from '@/store/modules/category'
 import {
   reqAddOrUpdateAttrInfo,
+  reqAttrInfoList,
   reqDeleteAttrInfo,
-} from '@/api/product/attr/index'
+} from '@/api/product/attr'
 import { ElMessage } from 'element-plus'
 import { AttrInfo, AttrValue } from '@/api/product/attr/type'
+import Category from '@/components/Category/index.vue'
 
 const scene = ref(0) // 场景值 0：表格场景 1：增改场景
 const categoryStore = useCategoryStore()
 const inputRefArr = reactive<HTMLInputElement[]>([]) // 输入框实例数组
 const attrNameInputRef = ref<HTMLInputElement>()
-let attrInfoForm = reactive<AttrInfo>({
+const attrInfoForm = reactive<AttrInfo>({
   attrName: '',
   attrValueList: [],
   categoryId: 0,
   categoryLevel: 3,
 })
+let attrInfoList = ref<AttrInfo[]>([])
+
+watch(
+  () => categoryStore.c3Id,
+  async () => {
+    try {
+      await refreshAttrInfoList()
+    } catch (error: any) {
+      categoryStore.c3Id = '' // 此处服务器对某些分类会超时 做特别处理
+    }
+  },
+)
+
+const refreshAttrInfoList = async () => {
+  if (!categoryStore.c1Id || !categoryStore.c2Id || !categoryStore.c3Id) return
+  const res = await reqAttrInfoList(
+    categoryStore.c1Id,
+    categoryStore.c2Id,
+    categoryStore.c3Id,
+  )
+  if (res.code === 200) {
+    attrInfoList.value = res.data
+  }
+}
 
 // 处理点击添加属性信息按钮
 const addAttrInfoHandler = () => {
@@ -177,7 +202,7 @@ const saveAttrInfo = async () => {
         type: 'success',
         message: attrInfoForm.id ? '修改成功！' : '添加成功！',
       })
-      await categoryStore.refreshAttrInfoList()
+      await refreshAttrInfoList()
       scene.value = 0
     } else {
       ElMessage({
@@ -264,7 +289,7 @@ const deleteAttrInfo = async (attrId: number) => {
       type: 'success',
       message: '删除成功',
     })
-    await categoryStore.refreshAttrInfoList()
+    await refreshAttrInfoList()
   } else {
     ElMessage({
       type: 'error',
@@ -283,6 +308,11 @@ const rules = reactive({
       trigger: 'blur',
     },
   ],
+})
+
+onBeforeUnmount(() => {
+  // category是公共组件，卸载前重置仓库数据
+  categoryStore.$reset()
 })
 </script>
 
