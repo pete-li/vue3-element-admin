@@ -6,7 +6,7 @@
           v-model="categoryStore.c1Id"
           placeholder="请选择"
           @change="changeHandler(1)"
-          :disabled="scene === 1"
+          :disabled="scene !== 0"
         >
           <el-option
             v-for="c1 in categoryStore.c1ResArr"
@@ -21,7 +21,7 @@
           v-model="categoryStore.c2Id"
           placeholder="请选择"
           @change="changeHandler(2)"
-          :disabled="scene === 1"
+          :disabled="scene !== 0"
         >
           <el-option
             v-for="c2 in categoryStore.c2ResArr"
@@ -36,7 +36,7 @@
           v-model="categoryStore.c3Id"
           placeholder="请选择"
           @change="changeHandler(3)"
-          :disabled="scene === 1"
+          :disabled="scene !== 0"
         >
           <el-option
             v-for="c3 in categoryStore.c3ResArr"
@@ -84,6 +84,12 @@ const changeHandler = async (cLevel: number) => {
 defineProps(['scene'])
 const emit = defineEmits(['c1Change', 'c2Change', 'c3Change'])
 </script>
+
+<style lang="scss" scoped>
+.category {
+  margin-bottom: 28px;
+}
+</style>
 
 <script lang="ts">
 export default {
