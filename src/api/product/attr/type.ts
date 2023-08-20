@@ -25,6 +25,8 @@ export interface AttrValue {
 // 属性信息
 export interface AttrInfo {
   id?: number
+  valueNameId?: number //从v-model收集的属性名id
+  hashMap?: Map<number, number> //收集属性id和属性值id的键值对
   attrName: string
   categoryId: number
   categoryLevel: number

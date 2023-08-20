@@ -1,0 +1,213 @@
+[
+  {
+    "id": 11837,
+    "attrName": "CPU",
+    "categoryId": 61,
+    "categoryLevel": 3,
+    "attrValueList": [
+      {
+        "id": 121100,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "骁龙8+",
+        "attrId": 11837
+      },
+      {
+        "id": 121102,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "骁龙888",
+        "attrId": 11837
+      },
+      {
+        "id": 121104,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "骁龙865",
+        "attrId": 11837
+      },
+      {
+        "id": 121099,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "骁龙8Gen2",
+        "attrId": 11837
+      },
+      {
+        "id": 121101,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "骁龙8",
+        "attrId": 11837
+      },
+      {
+        "id": 121103,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "骁龙870",
+        "attrId": 11837
+      }
+    ]
+  },
+  {
+    "id": 11839,
+    "createTime": null,
+    "updateTime": null,
+    "attrName": "屏幕",
+    "categoryId": 61,
+    "categoryLevel": 3,
+    "attrValueList": [
+      {
+        "id": 121121,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "AMOLED E4",
+        "attrId": 11839
+      },
+      {
+        "id": 121123,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "京东方Q9",
+        "attrId": 11839
+      },
+      {
+        "id": 121120,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "AMOLED E5",
+        "attrId": 11839
+      },
+      {
+        "id": 121122,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "华星光电C7",
+        "attrId": 11839
+      },
+      {
+        "id": 121119,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "AMOLED E6",
+        "attrId": 11839
+      }
+    ]
+  },
+  {
+    "id": 11889,
+    "createTime": null,
+    "updateTime": null,
+    "attrName": "啊啊啊啊",
+    "categoryId": 61,
+    "categoryLevel": 3,
+    "attrValueList": [
+      {
+        "id": 121194,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "f'f'f",
+        "attrId": 11889
+      }
+    ]
+  },
+  {
+    "id": 11891,
+    "createTime": null,
+    "updateTime": null,
+    "attrName": "啦啦啦",
+    "categoryId": 61,
+    "categoryLevel": 3,
+    "attrValueList": [
+      {
+        "id": 121206,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "红",
+        "attrId": 11891
+      },
+      {
+        "id": 121208,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "蓝",
+        "attrId": 11891
+      },
+      {
+        "id": 121207,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "黄",
+        "attrId": 11891
+      }
+    ]
+  },
+  {
+    "id": 11892,
+    "createTime": null,
+    "updateTime": null,
+    "attrName": "1",
+    "categoryId": 61,
+    "categoryLevel": 3,
+    "attrValueList": [
+      {
+        "id": 121209,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "1",
+        "attrId": 11892
+      }
+    ]
+  },
+  {
+    "id": 11893,
+    "createTime": null,
+    "updateTime": null,
+    "attrName": "1111",
+    "categoryId": 61,
+    "categoryLevel": 3,
+    "attrValueList": [
+      {
+        "id": 121210,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "1",
+        "attrId": 11893
+      }
+    ]
+  },
+  {
+    "id": 11894,
+    "createTime": null,
+    "updateTime": null,
+    "attrName": "1",
+    "categoryId": 61,
+    "categoryLevel": 3,
+    "attrValueList": [
+      {
+        "id": 121211,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "1",
+        "attrId": 11894
+      }
+    ]
+  },
+  {
+    "id": 11895,
+    "createTime": null,
+    "updateTime": null,
+    "attrName": "duke",
+    "categoryId": 61,
+    "categoryLevel": 3,
+    "attrValueList": [
+      {
+        "id": 121213,
+        "createTime": null,
+        "updateTime": null,
+        "valueName": "黄色",
+        "attrId": 11895
+      }
+    ]
+  }
+]

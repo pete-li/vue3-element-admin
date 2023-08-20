@@ -56,8 +56,8 @@ import { onMounted } from 'vue'
 
 const categoryStore = useCategoryStore()
 
-onMounted(() => {
-  categoryStore.getC1()
+onMounted(async () => {
+  await categoryStore.getC1()
 })
 
 const changeHandler = async (cLevel: number) => {

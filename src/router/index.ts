@@ -54,7 +54,7 @@ router.afterEach((from) => {
 
 router.onError((error) => {
   nprogress.done()
-  console.warn('路由错误', error.message)
+  console.error('路由错误', error.message)
 })
 
 export default router

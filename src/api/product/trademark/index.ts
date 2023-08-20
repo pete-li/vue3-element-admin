@@ -12,13 +12,11 @@ export const reqGetTradeMark = (page: number, limit: number) =>
   request.get<any, TradeMarkResData>(`${API.GET_TM}/${page}/${limit}`)
 
 export const reqAddOrUpdateTradeMark = (data: TradeMark) => {
-  console.log(data)
-
   if (data.id) {
     // 修改需要id
     return request.put<any, any>(API.UPDATE_TM, data)
   } else {
-    // 添加不需要
+    // 添加不需要 点击添加的时候id已经初始化合并为空
     return request.post<any, any>(API.ADD_TM, data)
   }
 }

@@ -22,7 +22,7 @@ export const reqGetC3 = (category2Id: number | string) =>
   request.get<any, CategoryResData>(API.GET_C3 + category2Id)
 
 // 获取属性信息表
-export const reqAttrInfoList = (
+export const reqGetAttrInfoList = (
   category1Id: number | string,
   category2Id: number | string,
   category3Id: number | string,

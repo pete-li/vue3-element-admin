@@ -21,7 +21,7 @@ request.interceptors.response.use(
     return res.data //简化数据
   },
   (error) => {
-    console.error(error)
+    console.error('响应出错:', error)
     if (error.code === 'ECONNABORTED') {
       ElMessage({
         type: 'error',

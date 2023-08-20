@@ -132,25 +132,20 @@ const closeDialog = () => {
 }
 // 对话框确认
 const confirm = async () => {
-  try {
-    await ruleFormRef.value.validate() //返回是一个promise对象表示表单验证失败与否
-
-    const res = await reqAddOrUpdateTradeMark(trademarkForm)
-    if (res.code === 200) {
-      ElMessage({
-        type: 'success',
-        message: trademarkForm.id ? '修改品牌成功！' : '添加品牌成功！',
-      })
-      dialogVisible.value = false
-      await refreshTMData()
-    } else {
-      ElMessage({
-        type: 'error',
-        message: trademarkForm.id ? '修改品牌失败！' : '添加品牌失败！',
-      })
-    }
-  } catch (error) {
-    console.warn(error)
+  await ruleFormRef.value.validate() //返回是一个promise对象表示表单验证失败与否
+  const res = await reqAddOrUpdateTradeMark(trademarkForm)
+  if (res.code === 200) {
+    ElMessage({
+      type: 'success',
+      message: trademarkForm.id ? '修改品牌成功！' : '添加品牌成功！',
+    })
+    dialogVisible.value = false
+    await refreshTMData()
+  } else {
+    ElMessage({
+      type: 'error',
+      message: trademarkForm.id ? '修改品牌失败！' : '添加品牌失败！',
+    })
   }
 }
 

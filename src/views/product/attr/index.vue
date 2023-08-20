@@ -139,7 +139,7 @@ import { Plus } from '@element-plus/icons-vue'
 import { useCategoryStore } from '@/store/modules/category'
 import {
   reqAddOrUpdateAttrInfo,
-  reqAttrInfoList,
+  reqGetAttrInfoList,
   reqDeleteAttrInfo,
 } from '@/api/product/attr'
 import { ElMessage } from 'element-plus'
@@ -171,7 +171,7 @@ watch(
 
 const refreshAttrInfoList = async () => {
   if (!categoryStore.c1Id || !categoryStore.c2Id || !categoryStore.c3Id) return
-  const res = await reqAttrInfoList(
+  const res = await reqGetAttrInfoList(
     categoryStore.c1Id,
     categoryStore.c2Id,
     categoryStore.c3Id,
