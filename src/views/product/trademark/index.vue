@@ -96,6 +96,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, reactive } from 'vue'
+import { Plus } from '@element-plus/icons-vue'
 import {
   reqGetTradeMark,
   reqAddOrUpdateTradeMark,

@@ -26,7 +26,7 @@ const loginHandler = async () => {
 
     const redirect = route.query.redirect as string
 
-    router.push({ path: redirect || '/' })
+    await router.push({ path: redirect || '/' })
     ElNotification({
       type: 'success',
       message: '登录成功!',
