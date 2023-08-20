@@ -147,7 +147,7 @@ const rules = reactive({
     h2 {
       font-size: 20px;
       color: white;
-      margin: 20px 0px;
+      margin: 20px 0;
     }
     .login_btn {
       width: 100%;
