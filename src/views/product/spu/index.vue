@@ -7,6 +7,7 @@
     <el-card v-show="scene === 0">
       <!-- 添加SPU按钮 -->
       <el-button
+        @click="addSpuBtHandler"
         :disabled="!categoryStore.c3Id"
         type="primary"
         size="default"
@@ -32,7 +33,7 @@
               size="small"
               title="修改SPU"
               icon="Edit"
-              @click="editSpuBtHandler"
+              @click="editSpuBtHandler(row)"
             ></el-button>
             <el-button
               type="info"
@@ -94,13 +95,18 @@
     ></SkuForm>
 
     <!-- 场景2：添加/编辑SPU面板 -->
-    <SpuForm :scene="scene" @cancel="scene = 0" @save="scene = 0"></SpuForm>
+    <SpuForm
+      ref="spuFormRef"
+      :scene="scene"
+      @cancel="scene = 0"
+      @save="saveSpuHandler"
+    ></SpuForm>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useCategoryStore } from '@/store/modules/category'
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, ref, watch } from 'vue'
 import { reqDeleteSpuInfo, reqGetSpuInfo } from '@/api/product/spu'
 import Category from '@/components/Category/index.vue'
 import { SpuInfo } from '@/api/product/spu/type.ts'
@@ -119,6 +125,13 @@ const dialogTableVisible = ref(false)
 const spuInfoList = ref<SpuInfo[]>([])
 const skuInfoList = ref<SkuInfo[]>([])
 const skuFormRef = ref() //skuForm组件实例
+const spuFormRef = ref()
+
+// 在保存spu的时候 切换场景并且更新数据
+const saveSpuHandler = async () => {
+  scene.value = 0
+  await refreshSpuInfo()
+}
 
 // 处理删除spu信息
 const deleteSpuBtHandler = async (spuId: number) => {
@@ -141,15 +154,6 @@ const viewSpuBtHandler = async (spuId: number) => {
   dialogTableVisible.value = true
 }
 
-// 测试代码-------------------------------------
-onMounted(async () => {
-  categoryStore.c1Id = 2
-  await categoryStore.getC2()
-  categoryStore.c2Id = 13
-  await categoryStore.getC3()
-  categoryStore.c3Id = 61
-})
-
 // 处理添加sku
 const addSkuBtHandler = (spuId: number) => {
   skuFormRef.value.initSkuFormData(spuId) //通过ref拿到引用实例调用初始化函数
@@ -157,7 +161,14 @@ const addSkuBtHandler = (spuId: number) => {
 }
 
 // 处理修改spu
-const editSpuBtHandler = () => {
+const editSpuBtHandler = (spu: SpuInfo) => {
+  spuFormRef.value.initSpuPresetData(spu)
+  scene.value = 2
+}
+
+// 处理添加spu
+const addSpuBtHandler = () => {
+  spuFormRef.value.initSpuPresetData()
   scene.value = 2
 }
 
@@ -192,9 +203,19 @@ const currentChange = async () => {
   await refreshSpuInfo()
 }
 
+// 销毁前重置分类残仓库数据 防止切换路由上一次的数据还在
 onBeforeUnmount(() => {
   categoryStore.$reset()
 })
+
+/*// 测试代码 （用于自动选取分级选择器，不用自己点）
+onMounted(async () => {
+  categoryStore.c1Id = 2
+  await categoryStore.getC2()
+  categoryStore.c2Id = 13
+  await categoryStore.getC3()
+  categoryStore.c3Id = 61
+})*/
 </script>
 
 <style lang="scss" scoped></style>

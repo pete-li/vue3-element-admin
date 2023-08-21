@@ -1,4 +1,4 @@
-import basicResponse from '../base_type'
+import BasicResponse from '../base_type'
 
 // 登录表单信息
 export interface loginInfoForm {
@@ -7,7 +7,7 @@ export interface loginInfoForm {
 }
 
 // 登录响应数据格式
-export interface loginResData extends basicResponse {
+export interface loginResData extends BasicResponse {
   data: string //这里的data就是token
 }
 
@@ -25,6 +25,6 @@ interface userInfo {
 }
 
 // 用户响应信息的基础格式
-export interface userInfoResData extends basicResponse {
+export interface userInfoResData extends BasicResponse {
   data: userInfo
 }

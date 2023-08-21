@@ -1,4 +1,4 @@
-import basicResponse from '../../base_type'
+import BasicResponse from '../../base_type'
 
 export interface SkuAttrValue {
   attrId: number | string //平台属性的ID
@@ -28,6 +28,6 @@ export interface SkuInfo {
 }
 
 // sku列表响应信息
-export interface SkuListResData extends basicResponse {
+export interface SkuListResData extends BasicResponse {
   data: SkuInfo[]
 }

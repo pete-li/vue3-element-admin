@@ -1,4 +1,4 @@
-import basicResponse from '@/api/base_type'
+import BasicResponse from '@/api/base_type'
 
 export interface TradeMark {
   id?: number
@@ -6,8 +6,13 @@ export interface TradeMark {
   logoUrl: string
 }
 
-// 品牌的响应数据
-export interface TradeMarkResData extends basicResponse {
+// 所有品牌数据列表响应数据
+export interface AllTradeMarListResData extends BasicResponse {
+  data: TradeMark[]
+}
+
+// 品牌的响应数据（页码）
+export interface TradeMarkResData extends BasicResponse {
   data: {
     records: TradeMark[]
     total: number

@@ -1,4 +1,4 @@
-import basicResponse from '@/api/base_type'
+import BasicResponse from '@/api/base_type'
 
 // 分类
 export interface Category {
@@ -10,7 +10,7 @@ export interface Category {
 }
 
 // 三个分类的响应数据
-export interface CategoryResData extends basicResponse {
+export interface CategoryResData extends BasicResponse {
   data: Category[]
 }
 
@@ -34,6 +34,6 @@ export interface AttrInfo {
 }
 
 // 属性信息响应的整体数据
-export interface AttrInfoResData extends basicResponse {
+export interface AttrInfoResData extends BasicResponse {
   data: AttrInfo[]
 }

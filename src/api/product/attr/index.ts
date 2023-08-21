@@ -1,5 +1,6 @@
 import request from '@/utils/request'
 import { AttrInfo, AttrInfoResData, CategoryResData } from './type'
+import BasicResponse from '@/api/base_type.ts'
 
 enum API {
   GET_C1 = '/admin/product/getCategory1',
@@ -33,8 +34,8 @@ export const reqGetAttrInfoList = (
 
 // 添加或修改属性
 export const reqAddOrUpdateAttrInfo = (data: AttrInfo) =>
-  request.post<any, any>(API.ADD_OR_UPDATE_ATTR_INFO, data)
+  request.post<any, BasicResponse>(API.ADD_OR_UPDATE_ATTR_INFO, data)
 
 // 删除属性信息
 export const reqDeleteAttrInfo = (attrId: number) =>
-  request.delete<any, any>(API.DELETE_ATTR_INFO + attrId)
+  request.delete<any, BasicResponse>(API.DELETE_ATTR_INFO + attrId)

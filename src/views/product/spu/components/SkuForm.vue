@@ -2,7 +2,7 @@
 import { reactive, ref } from 'vue'
 import { useCategoryStore } from '@/store/modules/category.ts'
 import { reqGetAttrInfoList } from '@/api/product/attr'
-import { reqGetSaleAttrListById, reqGetSkuImgListById } from '@/api/product/spu'
+import { reqGetSaleAttrListById, reqGetSpuImgListById } from '@/api/product/spu'
 import { reqAddSkuInfo } from '@/api/product/sku'
 import { AttrInfo } from '@/api/product/attr/type.ts'
 import { SpuImage, SpuSaleAttr } from '@/api/product/spu/type.ts'
@@ -28,12 +28,11 @@ const addSkuForm = reactive<SkuInfo>({
   skuSaleAttrValueList: [],
 })
 const imgTableRef = ref()
+const hashMap = new Map() //attrId : attrValId 键值对
 
 // 属性值发生变化时（每个下拉选择器）
 const attrValueChange = (attrInfo: AttrInfo, attrValId: number) => {
-  const hashMap = new Map() //attrId : attrValId 键值对
   hashMap.set(attrInfo.id, attrValId)
-  attrInfo.hashMap = hashMap
 }
 
 // 处理设置默认图片逻辑
@@ -45,16 +44,14 @@ const setDefaultImgHandler = (row: SpuImage) => {
 
 // 处理保存时候的逻辑
 const saveHandler = async () => {
-  //收集平台属性
-  attrInfoList.value.forEach((attrInfo: AttrInfo) => {
-    attrInfo.hashMap?.forEach((val: number, key: number) => {
-      addSkuForm.skuAttrValueList?.push({
-        attrId: key,
-        valueId: val,
-      })
+  //收集平台属性 （使用哈希表）
+  hashMap.forEach((val: number, key: number) => {
+    addSkuForm.skuAttrValueList?.push({
+      attrId: key,
+      valueId: val,
     })
   })
-  // 收集销售属性
+  // 收集销售属性 （使用分隔符）
   addSkuForm.skuSaleAttrValueList = saleAttrList.value.reduce(
     (pre: skuSaleAttrValue[], cur: SpuSaleAttr) => {
       if (cur.hashMapString) {
@@ -85,7 +82,7 @@ const saveHandler = async () => {
 }
 
 // 初始化sku的form表单需要填写的预数据
-const initSkuFormData = async (spuId: number) => {
+const initSkuPresetData = async (spuId: number) => {
   // 先置空addSkuForm的参数 防止上次添加的数据还在内存中
   Object.assign(addSkuForm, {
     category3Id: 0,
@@ -99,6 +96,7 @@ const initSkuFormData = async (spuId: number) => {
     skuAttrValueList: [],
     skuSaleAttrValueList: [],
   })
+  hashMap.clear()
   try {
     // 初始化的时候可以把可以收集到的数据先收集好
     const [res1, res2, res3] = await Promise.all([
@@ -108,7 +106,7 @@ const initSkuFormData = async (spuId: number) => {
         categoryStore.c3Id,
       ),
       reqGetSaleAttrListById(spuId),
-      reqGetSkuImgListById(spuId),
+      reqGetSpuImgListById(spuId),
     ])
     attrInfoList.value = res1.data
     saleAttrList.value = res2.data
@@ -121,7 +119,7 @@ const initSkuFormData = async (spuId: number) => {
 // 由于组件用的是v-show并且数据依赖用户操作
 // 所以组件一开始就挂载无法直接通过挂载钩子来初始化，需要对其方法进行暴露
 defineExpose({
-  initSkuFormData,
+  initSkuFormData: initSkuPresetData,
 })
 </script>
 
