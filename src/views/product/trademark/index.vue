@@ -78,7 +78,7 @@
               v-if="trademarkForm.logoUrl"
               :src="trademarkForm.logoUrl"
               class="avatar"
-              alt="avatar"
+              alt="图片丢失了"
             />
             <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
           </el-upload>
@@ -190,6 +190,9 @@ const refreshTMData = async () => {
   if (res.code === 200) {
     trademarks.value = res.data.records
     total.value = res.data.total
+    trademarks.value.forEach((tm) => {
+      if (!tm.logoUrl.includes('http://')) tm.logoUrl = 'http://' + tm.logoUrl
+    })
   }
 }
 

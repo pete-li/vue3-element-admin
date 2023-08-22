@@ -1,213 +1,222 @@
-[
-  {
-    "id": 11837,
-    "attrName": "CPU",
-    "categoryId": 61,
-    "categoryLevel": 3,
-    "attrValueList": [
-      {
-        "id": 121100,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "骁龙8+",
-        "attrId": 11837
-      },
-      {
-        "id": 121102,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "骁龙888",
-        "attrId": 11837
-      },
-      {
-        "id": 121104,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "骁龙865",
-        "attrId": 11837
-      },
-      {
-        "id": 121099,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "骁龙8Gen2",
-        "attrId": 11837
-      },
-      {
-        "id": 121101,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "骁龙8",
-        "attrId": 11837
-      },
-      {
-        "id": 121103,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "骁龙870",
-        "attrId": 11837
-      }
-    ]
-  },
-  {
-    "id": 11839,
-    "createTime": null,
-    "updateTime": null,
-    "attrName": "屏幕",
-    "categoryId": 61,
-    "categoryLevel": 3,
-    "attrValueList": [
-      {
-        "id": 121121,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "AMOLED E4",
-        "attrId": 11839
-      },
-      {
-        "id": 121123,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "京东方Q9",
-        "attrId": 11839
-      },
-      {
-        "id": 121120,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "AMOLED E5",
-        "attrId": 11839
-      },
-      {
-        "id": 121122,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "华星光电C7",
-        "attrId": 11839
-      },
-      {
-        "id": 121119,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "AMOLED E6",
-        "attrId": 11839
-      }
-    ]
-  },
-  {
-    "id": 11889,
-    "createTime": null,
-    "updateTime": null,
-    "attrName": "啊啊啊啊",
-    "categoryId": 61,
-    "categoryLevel": 3,
-    "attrValueList": [
-      {
-        "id": 121194,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "f'f'f",
-        "attrId": 11889
-      }
-    ]
-  },
-  {
-    "id": 11891,
-    "createTime": null,
-    "updateTime": null,
-    "attrName": "啦啦啦",
-    "categoryId": 61,
-    "categoryLevel": 3,
-    "attrValueList": [
-      {
-        "id": 121206,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "红",
-        "attrId": 11891
-      },
-      {
-        "id": 121208,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "蓝",
-        "attrId": 11891
-      },
-      {
-        "id": 121207,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "黄",
-        "attrId": 11891
-      }
-    ]
-  },
-  {
-    "id": 11892,
-    "createTime": null,
-    "updateTime": null,
-    "attrName": "1",
-    "categoryId": 61,
-    "categoryLevel": 3,
-    "attrValueList": [
-      {
-        "id": 121209,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "1",
-        "attrId": 11892
-      }
-    ]
-  },
-  {
-    "id": 11893,
-    "createTime": null,
-    "updateTime": null,
-    "attrName": "1111",
-    "categoryId": 61,
-    "categoryLevel": 3,
-    "attrValueList": [
-      {
-        "id": 121210,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "1",
-        "attrId": 11893
-      }
-    ]
-  },
-  {
-    "id": 11894,
-    "createTime": null,
-    "updateTime": null,
-    "attrName": "1",
-    "categoryId": 61,
-    "categoryLevel": 3,
-    "attrValueList": [
-      {
-        "id": 121211,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "1",
-        "attrId": 11894
-      }
-    ]
-  },
-  {
-    "id": 11895,
-    "createTime": null,
-    "updateTime": null,
-    "attrName": "duke",
-    "categoryId": 61,
-    "categoryLevel": 3,
-    "attrValueList": [
-      {
-        "id": 121213,
-        "createTime": null,
-        "updateTime": null,
-        "valueName": "黄色",
-        "attrId": 11895
-      }
-    ]
-  }
-]
+{
+  "id": 31,
+  "createTime": "2021-12-10 01:31:42",
+  "updateTime": "2023-08-22 18:12:08",
+  "spuId": 11,
+  "price": 8888,
+  "skuName": "华为智慧屏 SE 55英寸 超薄电视 超高清智能液晶电视机 HD55DESA 2+16GB",
+  "skuDesc": "华为智慧屏 SE 55英寸 超薄电视 广色域鸿鹄画质 超高清智能液晶电视机 HD55DESA 2+16GB华为智慧屏 SE 55英寸 超薄电视 广色域鸿鹄画质 超高清智能液晶电视机 HD55DESA 2+16GB",
+  "weight": "3.00",
+  "tmId": 3,
+  "category3Id": 86,
+  "skuDefaultImg": "http://39.98.123.211/group2/M00/02/DC/rBHu8mGyQOKATYA2AABTVO9hAHc987.jpg",
+  "isSale": 0,
+  "skuImageList": [
+    {
+      "id": 153,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "imgName": "0b179e7ad25a2946.jpg",
+      "imgUrl": "http://39.98.123.211/group2/M00/02/DC/rBHu8mGyQOKAHoBTAAARB4P--g8514.jpg",
+      "spuImgId": 65,
+      "isDefault": "0"
+    },
+    {
+      "id": 154,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "imgName": "0d421f5794f060fe.jpg",
+      "imgUrl": "http://39.98.123.211/group2/M00/02/DC/rBHu8mGyQOKAKyqUAAAR3f_zdjo730.jpg",
+      "spuImgId": 66,
+      "isDefault": "0"
+    },
+    {
+      "id": 155,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "imgName": "2db50a84940bfe49(1).jpg",
+      "imgUrl": "http://39.98.123.211/group2/M00/02/DC/rBHu8mGyQOKATYA2AABTVO9hAHc987.jpg",
+      "spuImgId": 67,
+      "isDefault": "1"
+    },
+    {
+      "id": 156,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "imgName": "25d21f35a9960015.jpg",
+      "imgUrl": "http://39.98.123.211/group2/M00/02/DC/rBHu8mGyQOKAIYVMAAAyNwNxqVE007.jpg",
+      "spuImgId": 68,
+      "isDefault": "0"
+    },
+    {
+      "id": 157,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "imgName": "31a69c9e37bdd8de(3).jpg",
+      "imgUrl": "http://39.98.123.211/group2/M00/02/DC/rBHu8mGyQOKADVvuAAAn-tDlF6U934.jpg",
+      "spuImgId": 69,
+      "isDefault": "0"
+    },
+    {
+      "id": 158,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "imgName": "31a69c9e37bdd8de(4).jpg",
+      "imgUrl": "http://39.98.123.211/group2/M00/02/DC/rBHu8mGyQOKAavYxAAAn-tDlF6U019.jpg",
+      "spuImgId": 70,
+      "isDefault": "0"
+    },
+    {
+      "id": 159,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "imgName": "31a69c9e37bdd8de(5).jpg",
+      "imgUrl": "http://39.98.123.211/group2/M00/02/DC/rBHu8mGyQOWAaOiRAAQvS6HtPJg116.jpg",
+      "spuImgId": 71,
+      "isDefault": "0"
+    },
+    {
+      "id": 160,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "imgName": "31a69c9e37bdd8de.jpg",
+      "imgUrl": "http://39.98.123.211/group2/M00/02/DC/rBHu8mGyQOWADXvHAAEdWC6Ta4M523.jpg",
+      "spuImgId": 72,
+      "isDefault": "0"
+    }
+  ],
+  "skuAttrValueList": [
+    {
+      "id": 173,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 70,
+      "valueId": 93,
+      "skuId": 31,
+      "attrName": "品牌",
+      "valueName": "国内"
+    },
+    {
+      "id": 174,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 72,
+      "valueId": 97,
+      "skuId": 31,
+      "attrName": "功率",
+      "valueName": "100W"
+    },
+    {
+      "id": 175,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 88,
+      "valueId": 135,
+      "skuId": 31,
+      "attrName": "昂贵价格",
+      "valueName": "200"
+    },
+    {
+      "id": 176,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 97,
+      "valueId": 147,
+      "skuId": 31,
+      "attrName": "分辨率",
+      "valueName": "4K超高清"
+    },
+    {
+      "id": 177,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 121,
+      "valueId": 206,
+      "skuId": 31,
+      "attrName": "电视类型",
+      "valueName": "8K"
+    },
+    {
+      "id": 178,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 97,
+      "valueId": 146,
+      "skuId": 31,
+      "attrName": "分辨率",
+      "valueName": "8K超高清"
+    },
+    {
+      "id": 179,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 121,
+      "valueId": 207,
+      "skuId": 31,
+      "attrName": "电视类型",
+      "valueName": "MINI LED"
+    },
+    {
+      "id": 180,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 70,
+      "valueId": 93,
+      "skuId": 31,
+      "attrName": "品牌",
+      "valueName": "国内"
+    },
+    {
+      "id": 181,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 98,
+      "valueId": 149,
+      "skuId": 31,
+      "attrName": "观看距离",
+      "valueName": "3.5m"
+    },
+    {
+      "id": 182,
+      "createTime": "2021-12-10 01:31:41",
+      "updateTime": "2021-12-10 01:31:41",
+      "attrId": 121,
+      "valueId": 208,
+      "skuId": 31,
+      "attrName": "电视类型",
+      "valueName": "智慧屏"
+    }
+  ],
+  "skuSaleAttrValueList": [
+    {
+      "id": 61,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "spuId": 11,
+      "saleAttrValueId": 50,
+      "saleAttrId": 1,
+      "saleAttrName": "颜色",
+      "saleAttrValueName": "白"
+    },
+    {
+      "id": 62,
+      "createTime": "2021-12-10 01:31:42",
+      "updateTime": "2021-12-10 01:31:42",
+      "skuId": 31,
+      "spuId": 11,
+      "saleAttrValueId": 52,
+      "saleAttrId": 2,
+      "saleAttrName": "版本",
+      "saleAttrValueName": "国产"
+    }
+  ]
+}

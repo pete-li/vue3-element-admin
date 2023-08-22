@@ -78,7 +78,7 @@
           <template #default="{ row }">
             <img
               :src="row.skuDefaultImg"
-              alt="skuImg"
+              alt="图片丢失了"
               style="width: 100px; height: 100px; object-fit: contain"
             />
           </template>
