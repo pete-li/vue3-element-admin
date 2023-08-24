@@ -3,7 +3,7 @@
     <!-- 搜索栏 -->
     <el-card style="height: 80px">
       <el-form class="search-bar" inline>
-        <el-form-item label="用户名">
+        <el-form-item label="用户搜索">
           <el-input
             v-model="searchTxt"
             placeholder="请输入要搜索的用户名"
@@ -21,7 +21,6 @@
 
     <!-- 展示区域 -->
     <el-card style="margin: 32px 0">
-      <!-- 添加品牌按钮 -->
       <el-button @click="isAddOrEdit = true" type="primary">添加用户</el-button>
       <el-button type="danger">批量删除</el-button>
       <!-- 表格 -->
