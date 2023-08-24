@@ -23,7 +23,7 @@
     <el-card style="margin: 32px 0">
       <el-button @click="isAddOrEdit = true" type="primary">添加职位</el-button>
       <!-- 表格 -->
-      <el-table style="margin: 10px 0" border :data="[{ id: 1 }]">
+      <el-table style="margin: 32px 0" border :data="[{ id: 1 }]">
         <el-table-column type="selection" align="center"></el-table-column>
         <el-table-column
           label="#"
