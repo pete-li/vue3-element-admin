@@ -10,7 +10,7 @@ const request = axios.create({
 // 请求拦截器
 request.interceptors.request.use((config) => {
   console.log('请求配置：', config)
-  config.headers.token = GET_TOKEN()
+  config.headers.token = GET_TOKEN() // 在拦截器在请求头设置token，此后不需要再传token
   return config
 })
 

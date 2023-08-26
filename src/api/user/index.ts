@@ -2,7 +2,6 @@ import request from '@/utils/request'
 import { loginInfoForm, loginResData, userInfoResData } from './type'
 import BasicResponse from '@/api/base_type.ts'
 
-// 由于在拦截器在请求头设置了token，所以此后不需要再传token
 enum API {
   LOGIN_USER = '/admin/acl/index/login',
   LOGOUT_USER = '/admin/acl/index/logout',
