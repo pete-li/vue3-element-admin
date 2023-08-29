@@ -1,8 +1,4 @@
-export interface ResponseData {
-  code: number
-  message: string
-  ok: boolean
-}
+import BasicResponse from '@/api/base_type.ts'
 
 export interface RoleData {
   id?: number
@@ -14,7 +10,7 @@ export interface RoleData {
 
 export type Records = RoleData[]
 
-export interface RoleResponseData extends ResponseData {
+export interface RoleResponseData extends BasicResponse {
   data: {
     records: Records
     total: number
@@ -47,6 +43,6 @@ export interface MenuData {
 
 export type MenuList = MenuData[]
 
-export interface MenuResponseData extends ResponseData {
+export interface MenuResponseData extends BasicResponse {
   data: MenuList
 }

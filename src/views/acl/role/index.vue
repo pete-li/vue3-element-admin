@@ -5,16 +5,23 @@
       <el-form class="search-bar" inline>
         <el-form-item label="职位搜索">
           <el-input
+            ref="searchInpRef"
             v-model="searchTxt"
             placeholder="请输入要搜索的职位"
           ></el-input>
         </el-form-item>
 
         <el-form-item>
-          <el-button :disabled="!searchTxt.length" type="primary">
+          <el-button
+            @click="searchRole"
+            :disabled="!searchTxt.length"
+            type="primary"
+          >
             搜索
           </el-button>
-          <el-button>重置</el-button>
+          <el-button @click="settingStore.isRefresh = !settingStore.isRefresh">
+            重置
+          </el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -23,8 +30,7 @@
     <el-card style="margin: 32px 0">
       <el-button @click="isAddOrEdit = true" type="primary">添加职位</el-button>
       <!-- 表格 -->
-      <el-table style="margin: 32px 0" border :data="[{ id: 1 }]">
-        <el-table-column type="selection" align="center"></el-table-column>
+      <el-table style="margin: 32px 0" border :data="roleList">
         <el-table-column
           label="#"
           align="center"
@@ -32,19 +38,7 @@
         ></el-table-column>
         <el-table-column label="id" align="center" prop="id"></el-table-column>
         <el-table-column
-          label="用户名字"
-          align="center"
-          prop="username"
-          show-overflow-tooltip
-        ></el-table-column>
-        <el-table-column
-          label="用户名称"
-          align="center"
-          prop="name"
-          show-overflow-tooltip
-        ></el-table-column>
-        <el-table-column
-          label="用户角色"
+          label="职位名称"
           align="center"
           prop="roleName"
           show-overflow-tooltip
@@ -75,9 +69,9 @@
               编辑
             </el-button>
             <el-popconfirm
-              :title="`你确定删除${row.username}`"
+              :title="`你确定删除${row.roleName}`"
               width="260px"
-              @confirm="row"
+              @confirm="deleteRole(row.id)"
             >
               <template #reference>
                 <el-button type="danger" size="small" icon="Delete">
@@ -92,12 +86,12 @@
       <el-pagination
         v-model:current-page="curPage"
         v-model:page-size="pageSize"
-        :page-sizes="[5, 7, 9, 11]"
+        :page-sizes="[10, 20, 30, 40]"
         background
         layout="prev, pager, next, jumper, ->, sizes, total"
         :total="total"
-        @size-change="null"
-        @current-change="null"
+        @size-change="sizeChange"
+        @current-change="refreshRoleData"
       />
     </el-card>
 
@@ -144,14 +138,61 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import useSettingStore from '@/store/modules/setting.ts'
+import { reqAllRoleList, reqRemoveRole } from '@/api/acl/role/idnex.ts'
+import { RoleData } from '@/api/acl/role/type.ts'
+import { ElMessage } from 'element-plus'
 
 const curPage = ref(1)
-const pageSize = ref(5)
+const pageSize = ref(10)
 const total = ref(0)
 const searchTxt = ref('')
 const isAddOrEdit = ref(false)
 const isAssign = ref(false)
+const settingStore = useSettingStore()
+const searchInpRef = ref()
+
+const roleList = ref<RoleData[]>([])
+
+const deleteRole = async (id: number) => {
+  const res = await reqRemoveRole(id)
+  if (res.code === 200) {
+    ElMessage.success({
+      message: '删除成功！',
+    })
+    await refreshRoleData()
+  }
+}
+
+// 每页大小改变
+const sizeChange = () => {
+  curPage.value = 1
+  refreshRoleData()
+}
+
+// 搜索用户名
+const searchRole = () => {
+  refreshRoleData()
+  searchInpRef.value.clear()
+}
+
+// 挂载更新数据
+onMounted(() => {
+  refreshRoleData()
+})
+
+async function refreshRoleData() {
+  const res = await reqAllRoleList(
+    curPage.value,
+    pageSize.value,
+    searchTxt.value,
+  )
+  if (res.code === 200) {
+    roleList.value = res.data.records
+    total.value = res.data.total
+  }
+}
 
 const defaultProps = {
   children: 'children',

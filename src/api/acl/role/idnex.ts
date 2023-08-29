@@ -4,6 +4,7 @@ import {
   RoleData,
   RoleResponseData,
 } from '@/api/acl/role/type.ts'
+import BasicResponse from '@/api/base_type.ts'
 
 enum API {
   ALL_ROLE_URL = '/admin/acl/role/',
@@ -21,9 +22,9 @@ export const reqAllRoleList = (page: number, limit: number, roleName: string) =>
 
 export const reqAddOrUpdateRole = (data: RoleData) => {
   if (data.id) {
-    return request.put<any, any>(API.UPDATE_ROLE_URL, data)
+    return request.put<any, BasicResponse>(API.UPDATE_ROLE_URL, data)
   } else {
-    return request.post<any, any>(API.ADD_ROLE_URL, data)
+    return request.post<any, BasicResponse>(API.ADD_ROLE_URL, data)
   }
 }
 
@@ -31,9 +32,9 @@ export const reqAllMenuList = (roleId: number) =>
   request.get<any, MenuResponseData>(API.ALL_PERMISSION_URL + roleId)
 
 export const reqSetPermission = (roleId: number, permissionId: number[]) =>
-  request.post(
+  request.post<any, BasicResponse>(
     API.SET_PERMISSION_URL + `roleId=${roleId}&permissionId=${permissionId}`,
   )
 
 export const reqRemoveRole = (roleId: number) =>
-  request.delete<any, any>(API.REMOVE_ROLE_URL + roleId)
+  request.delete<any, BasicResponse>(API.REMOVE_ROLE_URL + roleId)
