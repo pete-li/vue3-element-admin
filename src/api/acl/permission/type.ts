@@ -1,8 +1,5 @@
-export interface ResponseData {
-  code: number
-  message: string
-  ok: boolean
-}
+import BasicResponse from '@/api/base_type.ts'
+
 export interface Permission {
   id: number
   createTime: string
@@ -20,7 +17,7 @@ export interface Permission {
 
 export type PermissionList = Permission[]
 
-export interface PermissionResponseData extends ResponseData {
+export interface PermissionResponseData extends BasicResponse {
   data: PermissionList
 }
 

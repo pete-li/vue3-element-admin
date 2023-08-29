@@ -1,11 +1,10 @@
 <template>
   <el-card>
     <el-table
-      :data="tableData"
+      :data="PermissionList"
       style="width: 100%; margin-bottom: 20px"
       row-key="id"
       border
-      default-expand-all
     >
       <el-table-column prop="name" label="名称" />
       <el-table-column prop="code" label="权限值" />
@@ -16,15 +15,26 @@
       />
       <el-table-column label="操作" width="260px">
         <template #default="{ row }">
-          <el-button size="small" @click="row">添加功能/菜单</el-button>
-          <el-button type="primary" size="small" @click="row">编辑</el-button>
+          <el-button :disabled="row.level === 4" size="small" @click="row">
+            {{ row.level === 3 ? '添加功能' : '添加菜单' }}
+          </el-button>
+          <el-button
+            :disabled="row.level === 1"
+            type="primary"
+            size="small"
+            @click="row"
+          >
+            编辑
+          </el-button>
           <el-popconfirm
             :title="`你确定要删除${row.name}?`"
             width="260px"
-            @confirm="row"
+            @confirm="deletePermission(row.id)"
           >
             <template #reference>
-              <el-button type="danger" size="small">删除</el-button>
+              <el-button :disabled="row.level === 1" type="danger" size="small">
+                删除
+              </el-button>
             </template>
           </el-popconfirm>
         </template>
@@ -34,55 +44,33 @@
 </template>
 
 <script setup lang="ts">
-interface User {
-  id: number
-  date: string
-  name: string
-  address: string
-  hasChildren?: boolean
-  children?: User[]
+import { reqAllPermission, reqRemoveMenu } from '@/api/acl/permission/idnex.ts'
+import { Permission } from '@/api/acl/permission/type.ts'
+import { onMounted, ref } from 'vue'
+import { ElMessage } from 'element-plus'
+
+const PermissionList = ref<Permission[]>([])
+
+onMounted(() => {
+  refreshPermission()
+})
+
+const refreshPermission = async () => {
+  const res = await reqAllPermission()
+  if (res.code === 200) {
+    PermissionList.value = res.data
+  }
 }
 
-const tableData: User[] = [
-  {
-    id: 1,
-    date: '2016-05-02',
-    name: 'wangxiaohu',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    id: 2,
-    date: '2016-05-04',
-    name: 'wangxiaohu',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    id: 3,
-    date: '2016-05-01',
-    name: 'wangxiaohu',
-    address: 'No. 189, Grove St, Los Angeles',
-    children: [
-      {
-        id: 31,
-        date: '2016-05-01',
-        name: 'wangxiaohu',
-        address: 'No. 189, Grove St, Los Angeles',
-      },
-      {
-        id: 32,
-        date: '2016-05-01',
-        name: 'wangxiaohu',
-        address: 'No. 189, Grove St, Los Angeles',
-      },
-    ],
-  },
-  {
-    id: 4,
-    date: '2016-05-03',
-    name: 'wangxiaohu',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-]
+const deletePermission = async (id: number) => {
+  const res = await reqRemoveMenu(id)
+  if (res.code === 200) {
+    ElMessage.success({
+      message: '删除成功！',
+    })
+    await refreshPermission()
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>
