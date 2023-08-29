@@ -5,6 +5,7 @@ import type {
   AllRoleResponseData,
   SetRoleData,
 } from './type'
+import BasicResponse from '@/api/base_type.ts'
 
 enum API {
   ALL_USER_URL = '/admin/acl/user/',
@@ -16,16 +17,16 @@ enum API {
   DELETE_ALL_USER_URL = '/admin/acl/user/batchRemove',
 }
 
-export const reqUserInfo = (page: number, limit: number, username: string) =>
+export const reqUserInfo = (page: number, limit: number, username = '') =>
   request.get<any, UserResponseData>(
     API.ALL_USER_URL + `${page}/${limit}/?username=${username}`,
   )
 
 export const reqAddOrUpdateUser = (data: User) => {
   if (data.id) {
-    return request.put<any, any>(API.UPDATE_USER_URL, data)
+    return request.put<any, BasicResponse>(API.UPDATE_USER_URL, data)
   } else {
-    return request.post<any, any>(API.ADD_USER_URL, data)
+    return request.post<any, BasicResponse>(API.ADD_USER_URL, data)
   }
 }
 
@@ -33,10 +34,10 @@ export const reqAllRole = (userId: number) =>
   request.get<any, AllRoleResponseData>(API.ALL_ROLE_URL + userId)
 
 export const reqSetUserRole = (data: SetRoleData) =>
-  request.post<any, any>(API.SET_ROLE_URL, data)
+  request.post<any, BasicResponse>(API.SET_ROLE_URL, data)
 
 export const reqRemoveUser = (userId: number) =>
-  request.delete<any, any>(API.DELETE_USER_URL + userId)
+  request.delete<any, BasicResponse>(API.DELETE_USER_URL + userId)
 
-export const reqSelectUser = (idList: number[]) =>
-  request.delete(API.DELETE_ALL_USER_URL, { data: idList })
+export const reqDeleteSelectedUser = (idList: number[]) =>
+  request.delete<any, BasicResponse>(API.DELETE_ALL_USER_URL, { data: idList })

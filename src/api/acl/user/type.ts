@@ -1,8 +1,4 @@
-export interface ResponseData {
-  code: number
-  message: string
-  ok: boolean
-}
+import BasicResponse from '@/api/base_type.ts'
 
 export interface User {
   id?: number
@@ -17,7 +13,7 @@ export interface User {
 
 export type Records = User[]
 
-export interface UserResponseData extends ResponseData {
+export interface UserResponseData extends BasicResponse {
   data: {
     records: Records
     total: number
@@ -36,7 +32,7 @@ export interface RoleData {
 }
 
 export type AllRole = RoleData[]
-export interface AllRoleResponseData extends ResponseData {
+export interface AllRoleResponseData extends BasicResponse {
   data: {
     assignRoles: AllRole
     allRolesList: AllRole
