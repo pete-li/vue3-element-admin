@@ -198,11 +198,11 @@ const saveAttrInfo = async () => {
     await attrFormRuleRef.value.validate()
     let res = await reqAddOrUpdateAttrInfo(attrInfoForm)
     if (res.code === 200) {
+      await refreshAttrInfoList()
       ElMessage({
         type: 'success',
         message: attrInfoForm.id ? '修改成功！' : '添加成功！',
       })
-      await refreshAttrInfoList()
       scene.value = 0
     } else {
       ElMessage({
@@ -285,11 +285,11 @@ const addAttrValue = () => {
 const deleteAttrInfo = async (attrId: number) => {
   const res = await reqDeleteAttrInfo(attrId)
   if (res.code === 200) {
+    await refreshAttrInfoList()
     ElMessage({
       type: 'success',
       message: '删除成功',
     })
-    await refreshAttrInfoList()
   } else {
     ElMessage({
       type: 'error',

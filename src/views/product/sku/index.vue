@@ -197,11 +197,11 @@ async function viewSkuInfoDetail(row: SkuInfo) {
 async function deleteBtHandler(row: SkuInfo) {
   const res = await reqDeleteSkuInfo(row.id!)
   if (res.code === 200) {
+    await refreshSkuListData()
     ElMessage.success({
       message: '删除成功',
     })
     row.isSale = Number(!row.isSale)
-    await refreshSkuListData()
   }
 }
 

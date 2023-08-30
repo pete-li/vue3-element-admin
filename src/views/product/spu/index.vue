@@ -137,11 +137,11 @@ const saveSpuHandler = async () => {
 const deleteSpuBtHandler = async (spuId: number) => {
   let res = await reqDeleteSpuInfo(spuId)
   if (res.code === 200) {
+    await refreshSpuInfo()
     ElMessage({
       type: 'success',
       message: '删除成功！',
     })
-    await refreshSpuInfo()
   }
 }
 

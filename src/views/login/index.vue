@@ -79,7 +79,7 @@ const rules = reactive({
 </script>
 
 <template>
-  <div class="contanier">
+  <div class="container">
     <el-row>
       <el-col :span="12" :xs="0"></el-col>
       <el-col :span="12" :xs="24">
@@ -125,7 +125,7 @@ const rules = reactive({
 </template>
 
 <style lang="scss" scoped>
-.contanier {
+.container {
   width: 100%;
   height: 100vh;
   background: url('@/assets/images/background.jpg') no-repeat;

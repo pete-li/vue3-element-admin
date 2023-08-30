@@ -136,12 +136,12 @@ const confirm = async () => {
   await ruleFormRef.value.validate() //返回是一个promise对象表示表单验证失败与否
   const res = await reqAddOrUpdateTradeMark(trademarkForm)
   if (res.code === 200) {
+    await refreshTMData()
     ElMessage({
       type: 'success',
       message: trademarkForm.id ? '修改品牌成功！' : '添加品牌成功！',
     })
     dialogVisible.value = false
-    await refreshTMData()
   } else {
     ElMessage({
       type: 'error',
@@ -170,12 +170,12 @@ const updateTradeMark = (row: TradeMark) => {
 const deleteTradeMark = async (id: number) => {
   const res = await reqRemoveTradeMark(id)
   if (res.code === 200) {
+    await refreshTMData()
     ElMessage({
       type: 'success',
       message: '删除成功！',
     })
     dialogVisible.value = false
-    await refreshTMData()
   } else {
     ElMessage({
       type: 'error',

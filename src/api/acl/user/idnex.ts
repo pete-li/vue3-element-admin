@@ -17,11 +17,13 @@ enum API {
   DELETE_ALL_USER_URL = '/admin/acl/user/batchRemove',
 }
 
+// 获取用户信息
 export const reqUserInfo = (page: number, limit: number, username = '') =>
   request.get<any, UserResponseData>(
     API.ALL_USER_URL + `${page}/${limit}/?username=${username}`,
   )
 
+// 添加/修改用户
 export const reqAddOrUpdateUser = (data: User) => {
   if (data.id) {
     return request.put<any, BasicResponse>(API.UPDATE_USER_URL, data)
@@ -30,14 +32,18 @@ export const reqAddOrUpdateUser = (data: User) => {
   }
 }
 
-export const reqAllRole = (userId: number) =>
+// 根据ID查询所有角色
+export const reqAllRoleById = (userId: number) =>
   request.get<any, AllRoleResponseData>(API.ALL_ROLE_URL + userId)
 
+// 设置用户的角色
 export const reqSetUserRole = (data: SetRoleData) =>
   request.post<any, BasicResponse>(API.SET_ROLE_URL, data)
 
+// 删除用户
 export const reqRemoveUser = (userId: number) =>
   request.delete<any, BasicResponse>(API.DELETE_USER_URL + userId)
 
+// 批量删除用户
 export const reqDeleteSelectedUser = (idList: number[]) =>
   request.delete<any, BasicResponse>(API.DELETE_ALL_USER_URL, { data: idList })

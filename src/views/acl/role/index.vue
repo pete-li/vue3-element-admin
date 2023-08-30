@@ -158,10 +158,10 @@ const roleList = ref<RoleData[]>([])
 const deleteRole = async (id: number) => {
   const res = await reqRemoveRole(id)
   if (res.code === 200) {
+    await refreshRoleData()
     ElMessage.success({
       message: '删除成功！',
     })
-    await refreshRoleData()
   }
 }
 

@@ -111,16 +111,16 @@ const saveHandler = async () => {
   spuInfoForm.spuSaleAttrList = saleAttrTable.value
   const res = await reqAddOrUpdateSpuInfo(spuInfoForm)
   if (res.code === 200) {
+    await resetPreData()
     ElMessage.success({
       message: spuInfoForm.id ? '修改成功!' : '添加成功!',
     })
+    emit('save') //切换场景
   } else {
     ElMessage.error({
       message: spuInfoForm.id ? '修改失败!' : '添加失败!',
     })
   }
-  emit('save') //切换场景
-  await resetPreData()
 }
 
 // 重置预设数据 （主要为添加数据做准备）

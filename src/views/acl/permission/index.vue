@@ -65,10 +65,10 @@ const refreshPermission = async () => {
 const deletePermission = async (id: number) => {
   const res = await reqRemoveMenu(id)
   if (res.code === 200) {
+    await refreshPermission()
     ElMessage.success({
       message: '删除成功！',
     })
-    await refreshPermission()
   }
 }
 </script>

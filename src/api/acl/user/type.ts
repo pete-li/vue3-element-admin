@@ -40,6 +40,6 @@ export interface AllRoleResponseData extends BasicResponse {
 }
 
 export interface SetRoleData {
-  roleIdList: number[]
   userId: number
+  roleIdList: number[]
 }

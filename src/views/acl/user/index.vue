@@ -28,7 +28,9 @@
 
     <!-- 展示区域 -->
     <el-card style="margin: 32px 0">
-      <el-button @click="isAddOrEdit = true" type="primary">添加用户</el-button>
+      <el-button @click="addOrEditUserBtHandler" type="primary">
+        添加用户
+      </el-button>
       <el-button
         @click="batchDelete"
         :disabled="selectedIdList.length === 0"
@@ -78,11 +80,15 @@
         ></el-table-column>
         <el-table-column label="操作" width="300px" align="center">
           <template #default="{ row }">
-            <el-button size="small" icon="User" @click="isAssign = true">
+            <el-button
+              size="small"
+              icon="User"
+              @click="assignRoleBtHandler(row)"
+            >
               分配角色
             </el-button>
             <el-button
-              @click="isAddOrEdit = true"
+              @click="addOrEditUserBtHandler(row)"
               type="primary"
               size="small"
               icon="Edit"
@@ -117,56 +123,70 @@
     </el-card>
 
     <!-- 增加/编辑用户的抽屉 -->
-    <el-drawer v-model="isAddOrEdit">
+    <el-drawer v-model="isAddEditDrawer" @close="addOrEditDrawerClose">
       <template #header>
-        <h1>添加/编辑用户</h1>
+        <h1>{{ userForm.id ? '编辑用户' : '添加用户' }}</h1>
       </template>
 
       <template #default>
-        <el-form>
-          <el-form-item label="用户姓名">
-            <el-input placeholder="请输入用户姓名" />
+        <el-form ref="userFormRef" :model="userForm" :rules="rules">
+          <el-form-item prop="username" label="用户姓名">
+            <el-input
+              v-model="userForm.username"
+              placeholder="请输入用户姓名"
+            />
           </el-form-item>
-          <el-form-item label="用户昵称">
-            <el-input placeholder="请输入用户昵称" />
+          <el-form-item prop="name" label="用户昵称">
+            <el-input v-model="userForm.name" placeholder="请输入用户昵称" />
           </el-form-item>
-          <el-form-item label="用户密码">
-            <el-input placeholder="请输入用户密码" />
+          <el-form-item v-if="!userForm.id" prop="password" label="用户密码">
+            <el-input
+              v-model="userForm.password"
+              placeholder="请输入用户密码"
+            />
           </el-form-item>
         </el-form>
       </template>
 
       <template #footer>
-        <el-button @click="isAddOrEdit = false">取消</el-button>
-        <el-button type="primary">确定</el-button>
+        <el-button @click="isAddEditDrawer = false">取消</el-button>
+        <el-button @click="addOrEditUser" type="primary">确定</el-button>
       </template>
     </el-drawer>
 
-    <!-- 分配角色  -->
-    <el-drawer v-model="isAssign">
+    <!-- 分配角色的抽屉  -->
+    <el-drawer v-model="isAssignDrawer">
       <template #header>
         <h1>分配角色</h1>
       </template>
 
       <template #default>
-        <el-form>
-          <el-form-item label="用户姓名" disabled>
-            <el-input placeholder="请输入用户姓名" />
+        <el-form v-model="assignRoleForm">
+          <el-form-item label="用户姓名">
+            <el-input
+              v-model="assignRoleForm.username"
+              placeholder="请输入用户姓名"
+              disabled
+            />
           </el-form-item>
           <el-form-item label="职位列表">
             <el-checkbox
-              v-model="checkAll"
+              v-model="isCheckAll"
               :indeterminate="isIndeterminate"
               @change="handleCheckAllChange"
             >
               全选
             </el-checkbox>
             <el-checkbox-group
-              v-model="checkedCities"
-              @change="handleCheckedCitiesChange"
+              v-model="assignRoleForm.selectedRoleIdList"
+              @change="handleCheckedRolesChange"
             >
-              <el-checkbox v-for="city in cities" :key="city" :label="city">
-                {{ city }}
+              <el-checkbox
+                v-for="item in assignRoleForm.allRoleInfoList"
+                :key="item.id"
+                :label="item.id"
+              >
+                {{ item.roleName }}
               </el-checkbox>
             </el-checkbox-group>
           </el-form-item>
@@ -174,49 +194,185 @@
       </template>
 
       <template #footer>
-        <el-button @click="isAssign = false">取消</el-button>
-        <el-button type="primary">确定</el-button>
+        <el-button @click="isAssignDrawer = false">取消</el-button>
+        <el-button @click="assignRoleConfirm" type="primary">确定</el-button>
       </template>
     </el-drawer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import {
+  reqAddOrUpdateUser,
+  reqAllRoleById,
   reqDeleteSelectedUser,
   reqRemoveUser,
+  reqSetUserRole,
   reqUserInfo,
 } from '@/api/acl/user/idnex.ts'
-import { User } from '@/api/acl/user/type.ts'
+import { RoleData, User } from '@/api/acl/user/type.ts'
 import useSettingStore from '@/store/modules/setting.ts'
-import { ElMessage } from 'element-plus'
+import { ElMessage, FormInstance, FormRules } from 'element-plus'
 
 const curPage = ref(1)
 const pageSize = ref(5)
 const total = ref(0)
 const searchTxt = ref('')
-const isAddOrEdit = ref(false)
-const isAssign = ref(false)
+const isAddEditDrawer = ref(false)
+const isAssignDrawer = ref(false)
 const searchInpRef = ref()
 const settingStore = useSettingStore()
 
-const checkAll = ref(false)
-const isIndeterminate = ref(true)
-const checkedCities = ref(['Shanghai', 'Beijing'])
-const cities = ['Shanghai', 'Beijing', 'Guangzhou', 'Shenzhen']
+const isCheckAll = ref(false)
+const isIndeterminate = ref(false)
 
 const userInfoList = ref<User[]>([])
 const selectedIdList = ref<number[]>([])
+const userFormRef = ref<FormInstance>()
+
+// 用户表单数据
+const userForm = reactive({
+  id: 0,
+  username: '',
+  name: '',
+  password: '',
+})
+
+interface assignRole {
+  userId: number
+  username: string
+  allRoleInfoList: RoleData[]
+  selectedRoleIdList: number[]
+}
+
+const assignRoleForm = reactive<assignRole>({
+  userId: 0,
+  username: '',
+  allRoleInfoList: [],
+  selectedRoleIdList: [],
+})
+
+// 分配角色 确定 按钮
+const assignRoleConfirm = async () => {
+  const res = await reqSetUserRole({
+    userId: assignRoleForm.userId,
+    roleIdList: assignRoleForm.selectedRoleIdList,
+  })
+  if (res.code === 200) {
+    await refreshUserInfo()
+    ElMessage.success({
+      message: '分配角色成功！',
+    })
+    isAssignDrawer.value = false
+  }
+}
+
+// 处理点击分配角色按钮
+const assignRoleBtHandler = async (row: User) => {
+  const res = await reqAllRoleById(row.id!)
+  if (res.code === 200) {
+    assignRoleForm.userId = row.id!
+    assignRoleForm.selectedRoleIdList = []
+    res.data.assignRoles.forEach((item, index) => {
+      assignRoleForm.selectedRoleIdList[index] = item.id!
+    })
+    assignRoleForm.allRoleInfoList = res.data.allRolesList
+    assignRoleForm.username = row.name!
+    isAssignDrawer.value = true
+  }
+}
+
+// 关闭 添加/编辑 用户抽屉时触发
+const addOrEditDrawerClose = () => {
+  userFormRef.value?.clearValidate()
+  Object.assign(userForm, {
+    id: 0,
+    username: '',
+    name: '',
+    password: '',
+  })
+}
+
+// 处理 添加/编辑 用户按钮
+const addOrEditUserBtHandler = (row?: User) => {
+  if (row) {
+    Object.assign(userForm, {
+      id: row.id,
+      username: row.username,
+      name: row.name,
+    })
+  }
+  isAddEditDrawer.value = true
+}
+
+// 确认 添加/修改 用户按钮
+const addOrEditUser = async () => {
+  try {
+    await userFormRef.value?.validate()
+    const res = await reqAddOrUpdateUser(userForm)
+    if (res.code === 200) {
+      await refreshUserInfo()
+      ElMessage.success({
+        message: userForm.id ? '修改成功！' : '添加成功！',
+      })
+      isAddEditDrawer.value = false
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+// 用户名验证
+const validateUserName = (_rule: any, value: any, callback: any) => {
+  if (!value) {
+    return callback(new Error('此项为必填项！'))
+  } else if (/^\d+$/.test(value)) {
+    return callback(new Error('用户名称不能使用纯数字！'))
+  } else if (value?.length < 3) {
+    return callback(new Error('名字必须大于2个字符！'))
+  } else {
+    callback()
+  }
+}
+
+// 昵称验证
+const validateName = (_rule: any, value: any, callback: any) => {
+  if (!value) {
+    return callback(new Error('此项为必填项！'))
+  } else if (value?.length < 3) {
+    return callback(new Error('名字必须大于2个字符！'))
+  } else {
+    callback()
+  }
+}
+
+// 密码验证
+const validatePassword = (_rule: any, value: any, callback: any) => {
+  if (!value) {
+    return callback(new Error('此项为必填项！'))
+  } else if (value.length < 6) {
+    return callback(new Error('密码必须大于6个字符！'))
+  } else {
+    callback()
+  }
+}
+
+// 添加/修改用户表单验证规则
+const rules = reactive<FormRules>({
+  username: [{ required: true, validator: validateUserName, trigger: 'blur' }],
+  name: [{ required: true, validator: validateName, trigger: 'blur' }],
+  password: [{ required: true, validator: validatePassword, trigger: 'blur' }],
+})
 
 // 批量删除用户
 const batchDelete = async () => {
   const res = await reqDeleteSelectedUser(selectedIdList.value!)
   if (res.code === 200) {
+    await refreshUserInfo()
     ElMessage.success({
       message: '删除成功！',
     })
-    await refreshUserInfo()
   }
 }
 
@@ -232,10 +388,10 @@ const selectChange = (selectedList: User[]) => {
 const deleteUser = async (id: number) => {
   const res = await reqRemoveUser(id)
   if (res.code === 200) {
+    await refreshUserInfo()
     ElMessage.success({
       message: '删除成功！',
     })
-    await refreshUserInfo()
   }
 }
 // 挂载刷新数据
@@ -264,14 +420,25 @@ const sizeChange = () => {
   refreshUserInfo()
 }
 
-const handleCheckAllChange = (val: boolean) => {
-  checkedCities.value = val ? cities : []
+// 全选
+const handleCheckAllChange = (isCheckAll: boolean) => {
+  if (isCheckAll) {
+    assignRoleForm.allRoleInfoList.forEach((item, index) => {
+      assignRoleForm.selectedRoleIdList[index] = item.id!
+    })
+  } else {
+    assignRoleForm.selectedRoleIdList = []
+  }
   isIndeterminate.value = false
 }
-const handleCheckedCitiesChange = (value: string[]) => {
+
+// 部分勾选改变事件
+const handleCheckedRolesChange = (value: string[]) => {
+  console.log(value)
   const checkedCount = value.length
-  checkAll.value = checkedCount === cities.length
-  isIndeterminate.value = checkedCount > 0 && checkedCount < cities.length
+  isCheckAll.value = checkedCount === assignRoleForm.allRoleInfoList.length
+  isIndeterminate.value =
+    checkedCount > 0 && checkedCount < assignRoleForm.allRoleInfoList.length
 }
 </script>
 

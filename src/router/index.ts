@@ -38,8 +38,8 @@ router.beforeEach(async (to, from, next) => {
         next()
       } catch (error) {
         // 用户token过期
-        ElMessage({ type: 'warning', message: '用户信息过期，请重新登录！' })
         await userStore.user_logout() //退出登录
+        ElMessage({ type: 'warning', message: '用户信息过期，请重新登录！' })
         next({ path: '/login', query: { redirect: to.path } })
       }
     }
