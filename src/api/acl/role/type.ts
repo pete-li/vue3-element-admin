@@ -25,24 +25,3 @@ export interface RoleResponseData extends BasicResponse {
     pages: number
   }
 }
-
-export interface MenuData {
-  id: number
-  createTime: string
-  updateTime: string
-  pid: number
-  name: string
-  code: string
-  toCode: string
-  type: number
-  status: null
-  level: number
-  children: []
-  select: boolean
-}
-
-export type MenuList = MenuData[]
-
-export interface MenuResponseData extends BasicResponse {
-  data: MenuList
-}

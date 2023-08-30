@@ -17,7 +17,7 @@ export interface Permission {
 
 export type PermissionList = Permission[]
 
-export interface PermissionResponseData extends BasicResponse {
+export interface PermissionResData extends BasicResponse {
   data: PermissionList
 }
 

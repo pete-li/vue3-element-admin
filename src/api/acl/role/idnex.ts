@@ -1,10 +1,7 @@
 import request from '@/utils/request.ts'
-import {
-  MenuResponseData,
-  RoleData,
-  RoleResponseData,
-} from '@/api/acl/role/type.ts'
+import { RoleData, RoleResponseData } from '@/api/acl/role/type.ts'
 import BasicResponse from '@/api/base_type.ts'
+import { PermissionResData } from '@/api/acl/permission/type.ts'
 
 enum API {
   ALL_ROLE_URL = '/admin/acl/role/',
@@ -28,8 +25,8 @@ export const reqAddOrUpdateRole = (data: RoleData) => {
   }
 }
 
-export const reqAllMenuList = (roleId: number) =>
-  request.get<any, MenuResponseData>(API.ALL_PERMISSION_URL + roleId)
+export const reqAllPermissionList = (roleId: number) =>
+  request.get<any, PermissionResData>(API.ALL_PERMISSION_URL + roleId)
 
 export const reqSetPermission = (roleId: number, permissionId: number[]) =>
   request.post<any, BasicResponse>(
