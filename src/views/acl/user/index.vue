@@ -274,7 +274,7 @@ const assignRoleBtHandler = async (row: User) => {
   if (res.code === 200) {
     assignRoleForm.userId = row.id!
     assignRoleForm.selectedRoleIdList = []
-    res.data.assignRoles.forEach((item, index) => {
+    res.data.assignRoles.forEach((item: RoleData, index: number) => {
       assignRoleForm.selectedRoleIdList[index] = item.id!
     })
     assignRoleForm.allRoleInfoList = res.data.allRolesList
@@ -329,8 +329,8 @@ const validateUserName = (_rule: any, value: any, callback: any) => {
     return callback(new Error('此项为必填项！'))
   } else if (/^\d+$/.test(value)) {
     return callback(new Error('用户名称不能使用纯数字！'))
-  } else if (value?.length < 3) {
-    return callback(new Error('名字必须大于2个字符！'))
+  } else if (value?.length < 5) {
+    return callback(new Error('名字必须大于5个字符！'))
   } else {
     callback()
   }
@@ -340,8 +340,8 @@ const validateUserName = (_rule: any, value: any, callback: any) => {
 const validateName = (_rule: any, value: any, callback: any) => {
   if (!value) {
     return callback(new Error('此项为必填项！'))
-  } else if (value?.length < 3) {
-    return callback(new Error('名字必须大于2个字符！'))
+  } else if (value?.length < 5) {
+    return callback(new Error('名字必须大于5个字符！'))
   } else {
     callback()
   }
