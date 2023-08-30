@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-import type { MenuParams, PermissionResData } from './type'
+import type { Permission, PermissionResData } from './type'
 import BasicResponse from '@/api/base_type.ts'
 
 enum API {
@@ -12,7 +12,7 @@ enum API {
 export const reqAllPermission = () =>
   request.get<any, PermissionResData>(API.ALL_PERMISSION_URL)
 
-export const reqAddOrUpdateMenu = (data: MenuParams) => {
+export const reqAddOrUpdatePermission = (data: Permission) => {
   if (data.id) {
     return request.put<any, BasicResponse>(API.UPDATE_URL, data)
   } else {

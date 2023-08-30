@@ -28,7 +28,7 @@
           />
           <el-table-column prop="attrName" label="属性名称" />
           <el-table-column label="属性值名称">
-            <template #default="{ row }">
+            <template #default="{ row }: { row: AttrInfo }">
               <el-tag
                 style="margin: 3px"
                 v-for="attrValue in row.attrValueList"
@@ -98,7 +98,9 @@
             align="center"
           />
           <el-table-column label="属性值名称">
-            <template #default="{ row, $index }">
+            <template
+              #default="{ row, $index }: { row: AttrValue, $index: number }"
+            >
               <el-input
                 v-if="row.isEditMode"
                 placeholder="请输入属性值名称"

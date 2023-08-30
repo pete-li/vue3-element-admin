@@ -11,11 +11,9 @@ export interface User {
   roleName?: string
 }
 
-export type Records = User[]
-
 export interface UserResponseData extends BasicResponse {
   data: {
-    records: Records
+    records: User[]
     total: number
     size: number
     current: number
@@ -31,11 +29,10 @@ export interface RoleData {
   remark: null
 }
 
-export type AllRole = RoleData[]
 export interface AllRoleResponseData extends BasicResponse {
   data: {
-    assignRoles: AllRole
-    allRolesList: AllRole
+    assignRoles: RoleData[]
+    allRolesList: RoleData[]
   }
 }
 

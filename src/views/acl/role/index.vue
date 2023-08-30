@@ -104,7 +104,7 @@
     <!-- 增加/编辑角色的对话框 -->
     <el-dialog
       @close="addOrUpdateRoleClose"
-      v-model="isAddOrEditDrawer"
+      v-model="isAddOrEditDialog"
       :title="roleForm.id ? '编辑职位' : '增加职位'"
     >
       <el-form :model="roleForm" :rules="rules">
@@ -114,7 +114,7 @@
       </el-form>
       <template #footer>
         <span class="dialog-footer">
-          <el-button @click="isAddOrEditDrawer = false">取消</el-button>
+          <el-button @click="isAddOrEditDialog = false">取消</el-button>
           <el-button type="primary" @click="addOrEditRoleConfirm">
             确定
           </el-button>
@@ -168,7 +168,7 @@ const curPage = ref(1)
 const pageSize = ref(10)
 const total = ref(0)
 const searchTxt = ref('')
-const isAddOrEditDrawer = ref(false)
+const isAddOrEditDialog = ref(false)
 const isAssignDrawer = ref(false)
 const settingStore = useSettingStore()
 const searchInpRef = ref()
@@ -242,7 +242,7 @@ const addOrUpdateRoleBtHandler = (row: RoleData) => {
   if (row) {
     Object.assign(roleForm, row)
   }
-  isAddOrEditDrawer.value = true
+  isAddOrEditDialog.value = true
 }
 
 // 增加/编辑角色 确定按钮
@@ -250,7 +250,7 @@ const addOrEditRoleConfirm = async () => {
   const res = await reqAddOrUpdateRole(roleForm)
   if (res.code === 200) {
     await refreshRoleData()
-    isAddOrEditDrawer.value = false
+    isAddOrEditDialog.value = false
     ElMessage.success({
       message: roleForm.id ? '编辑成功' : '添加成功',
     })

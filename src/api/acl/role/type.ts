@@ -8,11 +8,9 @@ export interface RoleData {
   remark?: null
 }
 
-export type Records = RoleData[]
-
 export interface RoleResponseData extends BasicResponse {
   data: {
-    records: Records
+    records: RoleData[]
     total: number
     size: number
     current: number
