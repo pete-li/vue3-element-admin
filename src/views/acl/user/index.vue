@@ -265,6 +265,7 @@ const assignRoleConfirm = async () => {
       message: '分配角色成功！',
     })
     isAssignDrawer.value = false
+    window.location.reload()
   }
 }
 
@@ -434,7 +435,6 @@ const handleCheckAllChange = (isCheckAll: boolean) => {
 
 // 部分勾选改变事件
 const handleCheckedRolesChange = (value: string[]) => {
-  console.log(value)
   const checkedCount = value.length
   isCheckAll.value = checkedCount === assignRoleForm.allRoleInfoList.length
   isIndeterminate.value =

@@ -23,9 +23,7 @@ const loginHandler = async () => {
     isLoading.value = true
     await loginFormRef.value.validate() //如果没验证过直接抛出错误 如果没有try catch后续代码将不会执行
     await userStore.user_login(userForm)
-
     const redirect = route.query.redirect as string
-
     await router.push({ path: redirect || '/' })
     ElNotification({
       type: 'success',

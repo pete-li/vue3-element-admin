@@ -140,7 +140,6 @@ const addPermissionHandler = (row: Permission) => {
   curLevel.value = row.level
   permissionForm.level = row.level + 1
   permissionForm.pid = row.id!
-  console.log(row)
   isAddOrEditDialog.value = true
 }
 

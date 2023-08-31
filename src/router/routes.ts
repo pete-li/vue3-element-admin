@@ -1,3 +1,4 @@
+// 公共常量路由
 export const constantRoutes = [
   {
     path: '/login',
@@ -40,6 +41,20 @@ export const constantRoutes = [
       icon: 'Platform',
     },
   },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/404/index.vue'),
+    meta: {
+      title: '404',
+      hidden: true,
+      icon: '',
+    },
+  },
+]
+
+// 异步路由
+export const asyncRoutes = [
   {
     path: '/acl',
     component: () => import('@/layout/index.vue'),
@@ -136,16 +151,19 @@ export const constantRoutes = [
       },
     ],
   },
-  {
-    path: '/404',
-    name: '404',
-    component: () => import('@/views/404/index.vue'),
-    meta: {
-      title: '404',
-      hidden: true,
-      icon: '',
-    },
-  },
+]
+
+/*
+ * 必须拆任意路由 因为如果把任意路由放在公共常量路由中
+ * 会发现如果在异步路由中刷新 当路由没有addRoute完的时候 此时还没有异步路由的存在
+ * 又因为任意路由使用正则表达式，此时没有异步路由匹配不到则重定向到404页面 此结果并非所愿
+ * 故需要在pinia的user中在最后动态添加路由的时候来拼接任意路由：
+ * [...userRoutes, anyRoute].forEach((route: RouteRecordRaw) => {
+      router.addRoute(route) //动态加路由 相当于注册路由
+ * })
+ * */
+// 任意路由
+export const anyRoute = [
   {
     path: '/:pathMatch(.*)*',
     name: 'any',

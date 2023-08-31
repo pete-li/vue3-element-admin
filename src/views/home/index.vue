@@ -1,7 +1,7 @@
 <template>
-  <div class="admin-home">
-    <el-card class="user-panel">
-      <div style="display: flex">
+  <div class="home-layout">
+    <el-card>
+      <div class="box">
         <img class="user-avatar" :src="userStore.avatar" alt="图片丢失了" />
         <div class="user-info">
           <p class="hello-name">{{ getTime() }}好~ {{ userStore.username }}</p>
@@ -24,47 +24,38 @@ const userStore = useUserStore()
 </script>
 
 <style lang="scss" scoped>
-.admin-home {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-
-  .user-panel {
-    height: 200px;
-    margin: 16px 16px 0 16px;
+.home-layout {
+  .box {
+    display: flex;
 
     .user-avatar {
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      margin-bottom: 30px;
     }
 
     .user-info {
-      width: 100%;
-      height: 100%;
+      margin-left: 20px;
+      margin-top: 15px;
 
       .hello-name {
         font-size: 35px;
         font-weight: 900;
-        margin: 16px 0 16px 16px;
+        margin-bottom: 30px;
       }
 
       .sub-title {
         font-style: italic;
         color: #ccc;
         font-weight: 700;
-        margin-left: 16px;
       }
     }
   }
 
   .bottom {
-    height: 100%;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 }
 </style>
