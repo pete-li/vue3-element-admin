@@ -7,30 +7,12 @@ import router from '@/router'
 import { RouteRecordRaw } from 'vue-router'
 import cloneDeep from 'lodash/cloneDeep.js'
 
-// 过滤当前用户名下拥有哪些异步路由
-function filterAsyncRoutes(
-  allAsyncRoutes: RouteRecordRaw[],
-  resRoutes: string[],
-): RouteRecordRaw[] {
-  return allAsyncRoutes.filter((route: RouteRecordRaw) => {
-    // 统一转小写 不区分路由名字的大小写
-    const routeName = (route.name as string).toLowerCase()
-    if (resRoutes.includes(routeName)) {
-      if (route.children && route.children.length) {
-        // 递归函数返回的值要给子路由children
-        route.children = filterAsyncRoutes(route.children, resRoutes)
-      }
-      return true
-    }
-    return false
-  })
-}
-
 interface UserState {
   token: string | null
   menuRoutes: RouteRecordRaw[]
   username: string
   avatar: string
+  buttons: string[]
 }
 
 const useUserStore = defineStore('User', {
@@ -41,6 +23,7 @@ const useUserStore = defineStore('User', {
       menuRoutes: constantRoutes, //供递归组件menu使用的路由表 动态生成菜单侧边栏
       username: '',
       avatar: '',
+      buttons: [],
     }
   },
   // 异步逻辑代码 pinia移除了原来vuex的mutation 状态转换更简洁
@@ -74,6 +57,7 @@ const useUserStore = defineStore('User', {
       if (res.code === 200) {
         this.avatar = res.data.avatar
         this.username = res.data.name
+        this.buttons = res.data.buttons
         // 统一小写处理
         const resRoutes: string[] = res.data.routes.map((name) =>
           name.toLowerCase(),
@@ -100,5 +84,24 @@ const useUserStore = defineStore('User', {
   // 相同于全局的computed
   getters: {},
 })
+
+// 过滤当前用户名下拥有哪些异步路由
+function filterAsyncRoutes(
+  allAsyncRoutes: RouteRecordRaw[],
+  resRoutes: string[],
+): RouteRecordRaw[] {
+  return allAsyncRoutes.filter((route: RouteRecordRaw) => {
+    // 统一转小写 不区分路由名字的大小写
+    const routeName = (route.name as string).toLowerCase()
+    if (resRoutes.includes(routeName)) {
+      if (route.children && route.children.length) {
+        // 递归函数返回的值要给子路由children
+        route.children = filterAsyncRoutes(route.children, resRoutes)
+      }
+      return true
+    }
+    return false
+  })
+}
 
 export default useUserStore

@@ -18,6 +18,7 @@
         <el-table-column label="操作" width="260px">
           <template #default="{ row }: { row: Permission }">
             <el-button
+              v-permission-btn="`btn.Permission.add`"
               :disabled="row.level === 4"
               size="small"
               @click="addPermissionHandler(row)"
@@ -25,6 +26,7 @@
               {{ row.level === 3 ? '添加功能' : '添加菜单' }}
             </el-button>
             <el-button
+              v-permission-btn="`btn.Permission.update`"
               :disabled="row.level === 1"
               type="primary"
               size="small"
@@ -39,6 +41,7 @@
             >
               <template #reference>
                 <el-button
+                  v-permission-btn="`btn.Permission.remove`"
                   :disabled="row.level === 1"
                   type="danger"
                   size="small"

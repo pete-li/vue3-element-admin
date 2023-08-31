@@ -43,12 +43,14 @@
       <el-table-column label="操作" fixed="right" width="450px">
         <template #default="{ row }">
           <el-button
+            v-permission-btn="`btn.Sku.updown`"
             size="small"
             :icon="row.isSale ? 'Bottom' : 'Top'"
             :title="row.isSale ? '下架商品' : '上架商品'"
             @click="shelvesBtHandler(row)"
           ></el-button>
           <el-button
+            v-permission-btn="`btn.Sku.update`"
             type="primary"
             size="small"
             icon="Edit"
@@ -56,6 +58,7 @@
             @click="editBtHandler"
           ></el-button>
           <el-button
+            v-permission-btn="`btn.Sku.detail`"
             type="info"
             size="small"
             icon="InfoFilled"
@@ -69,6 +72,7 @@
           >
             <template #reference>
               <el-button
+                v-permission-btn="`btn.Sku.remove`"
                 type="danger"
                 title="删除sku"
                 size="small"

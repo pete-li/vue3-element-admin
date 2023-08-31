@@ -7,6 +7,7 @@
     <el-card v-show="scene === 0">
       <!-- 添加SPU按钮 -->
       <el-button
+        v-permission-btn="`btn.Spu.add`"
         @click="addSpuBtHandler"
         :disabled="!categoryStore.c3Id"
         type="primary"
@@ -23,12 +24,14 @@
         <el-table-column label="SPU操作">
           <template #default="{ row }">
             <el-button
+              v-permission-btn="`btn.Spu.addsku`"
               size="small"
               title="添加SKU"
               icon="Plus"
               @click="addSkuBtHandler(row.id)"
             ></el-button>
             <el-button
+              v-permission-btn="`btn.Spu.update`"
               type="primary"
               size="small"
               title="修改SPU"
@@ -36,6 +39,7 @@
               @click="editSpuBtHandler(row)"
             ></el-button>
             <el-button
+              v-permission-btn="`btn.Spu.skus`"
               type="info"
               icon="View"
               title="查看SKU列表"
@@ -49,7 +53,12 @@
               @confirm="deleteSpuBtHandler(row.id)"
             >
               <template #reference>
-                <el-button type="danger" size="small" icon="Delete"></el-button>
+                <el-button
+                  v-permission-btn="`btn.Spu.delete`"
+                  type="danger"
+                  size="small"
+                  icon="Delete"
+                ></el-button>
               </template>
             </el-popconfirm>
           </template>

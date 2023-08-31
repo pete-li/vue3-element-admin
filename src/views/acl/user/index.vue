@@ -28,10 +28,15 @@
 
     <!-- 展示区域 -->
     <el-card style="margin: 32px 0">
-      <el-button @click="addOrEditUserBtHandler" type="primary">
+      <el-button
+        v-permission-btn="`btn.User.add`"
+        @click="addOrEditUserBtHandler"
+        type="primary"
+      >
         添加用户
       </el-button>
       <el-button
+        v-permission-btn="`btn.User.remove`"
         @click="batchDelete"
         :disabled="selectedIdList.length === 0"
         type="danger"
@@ -81,6 +86,7 @@
         <el-table-column label="操作" width="300px" align="center">
           <template #default="{ row }">
             <el-button
+              v-permission-btn="`btn.User.assgin`"
               size="small"
               icon="User"
               @click="assignRoleBtHandler(row)"
@@ -88,6 +94,7 @@
               分配角色
             </el-button>
             <el-button
+              v-permission-btn="`btn.User.update`"
               @click="addOrEditUserBtHandler(row)"
               type="primary"
               size="small"
@@ -101,7 +108,12 @@
               @confirm="deleteUser(row.id)"
             >
               <template #reference>
-                <el-button type="danger" size="small" icon="Delete">
+                <el-button
+                  v-permission-btn="`btn.User.remove`"
+                  type="danger"
+                  size="small"
+                  icon="Delete"
+                >
                   删除
                 </el-button>
               </template>
@@ -174,6 +186,7 @@
               v-model="isCheckAll"
               :indeterminate="isIndeterminate"
               @change="handleCheckAllChange"
+              style="margin-right: 32px"
             >
               全选
             </el-checkbox>

@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <template>
   <div>
     <el-card class="box-card">
@@ -7,6 +8,7 @@
         size="default"
         @click="addTradeMark"
         icon="Plus"
+        v-permission-btn="`btn.Trademark.add`"
       >
         添加品牌
       </el-button>
@@ -27,6 +29,7 @@
         <el-table-column label="品牌操作">
           <template #default="{ row }">
             <el-button
+              v-permission-btn="`btn.Trademark.update`"
               type="primary"
               size="small"
               icon="Edit"
@@ -39,7 +42,12 @@
               @confirm="deleteTradeMark(row.id)"
             >
               <template #reference>
-                <el-button type="danger" size="small" icon="Delete"></el-button>
+                <el-button
+                  v-permission-btn="`btn.Trademark.remove`"
+                  type="danger"
+                  size="small"
+                  icon="Delete"
+                ></el-button>
               </template>
             </el-popconfirm>
           </template>

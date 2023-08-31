@@ -8,14 +8,15 @@ import GlobalComponents from '@/components'
 import '@/styles/index.scss'
 import router from './router'
 import pinia from '@/store'
+import { permissionBtn } from '@/directive/permission-btn.ts'
 
 const app = createApp(App)
-
 app.use(GlobalComponents) // 全局注册自定义组件
 app.use(ElementPlus, {
   locale: zhCN,
 })
 app.use(router)
 app.use(pinia)
+permissionBtn(app) // 全局注册自定义指令
 
 app.mount('#app')

@@ -28,7 +28,11 @@
 
     <!-- 展示区域 -->
     <el-card style="margin: 32px 0">
-      <el-button @click="addOrUpdateRoleBtHandler" type="primary">
+      <el-button
+        v-permission-btn="`btn.Role.add`"
+        @click="addOrUpdateRoleBtHandler"
+        type="primary"
+      >
         添加职位
       </el-button>
       <!-- 表格 -->
@@ -60,6 +64,7 @@
         <el-table-column label="操作" width="300px" align="center">
           <template #default="{ row }">
             <el-button
+              v-permission-btn="`btn.Role.assgin`"
               size="small"
               icon="User"
               @click="assignPermissionHandler(row)"
@@ -67,6 +72,7 @@
               分配权限
             </el-button>
             <el-button
+              v-permission-btn="`btn.Role.update`"
               type="primary"
               size="small"
               icon="Edit"
@@ -80,7 +86,12 @@
               @confirm="deleteRole(row.id)"
             >
               <template #reference>
-                <el-button type="danger" size="small" icon="Delete">
+                <el-button
+                  v-permission-btn="`btn.Role.remove`"
+                  type="danger"
+                  size="small"
+                  icon="Delete"
+                >
                   删除
                 </el-button>
               </template>

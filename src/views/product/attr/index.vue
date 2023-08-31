@@ -11,6 +11,7 @@
       <!-- 表格展示场景 -->
       <div class="table-scene" v-show="scene === 0">
         <el-button
+          v-permission-btn="`btn.Attr.add`"
           type="primary"
           :icon="Plus"
           @click="addAttrInfoHandler"
@@ -41,6 +42,7 @@
           <el-table-column label="属性操作">
             <template #default="{ row }">
               <el-button
+                v-permission-btn="`btn.Attr.update`"
                 type="primary"
                 size="small"
                 icon="Edit"
@@ -54,6 +56,7 @@
               >
                 <template #reference>
                   <el-button
+                    v-permission-btn="`btn.Attr.remove`"
                     type="danger"
                     size="small"
                     icon="Delete"
