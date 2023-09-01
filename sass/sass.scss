@@ -1,5 +1,5 @@
-@use "sass:math";
-@use "../sass/transfer";
+@use 'sass:math';
+@use '../sass/transfer';
 @include transfer.c-mixin();
 
 /* 
@@ -15,21 +15,18 @@
 // 三代编译器：dart-sass(最新) 弃用：node-sass ruby-sass
 */
 
-
 // test
 $basecolor: skyblue;
 
 p {
   color: $basecolor;
   display: flex;
-  transform: matrix3d(0, 0, 0);
+  //transform: matrix3d(0, 0, 0);
 
   font: {
     size: 20px;
     weight: bold;
   }
-
-  ;
 }
 
 // 变量
@@ -40,13 +37,13 @@ $black-mode: false;
 $var: null;
 $padding-parms: 10px 6px 10px 6px;
 $color-map: (
-  color1:#111,
-  color2:#222,
-  color3:#333
+  color1: #111,
+  color2: #222,
+  color3: #333,
 );
 $fonts: (
-  key1:"sdufihue",
-  key2:"sdbfiebif"
+  key1: 'sdufihue',
+  key2: 'sdbfiebif',
 );
 
 .container {
@@ -71,7 +68,7 @@ $color1: #666 !default;
 
 // 混合指令(Mixin directives)
 @mixin foo1 {
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 .mixin1 {
@@ -80,7 +77,7 @@ $color1: #666 !default;
 
 @mixin foo2 {
   .foo2 {
-    padding: 10px 0px;
+    padding: 10px 0;
   }
 }
 
@@ -111,9 +108,9 @@ $color1: #666 !default;
 %default {
   width: 200px;
   height: 200px;
-  border: 1px, solid, #666;
+  border: 1px solid #666;
   border-radius: 25%;
-  opacity: .5;
+  opacity: 0.5;
   background-color: white;
 }
 
@@ -126,7 +123,6 @@ $color1: #666 !default;
   @extend %default;
   background-color: yellow;
 }
-
 
 .warning {
   @extend %default;
@@ -147,23 +143,19 @@ $height: 20;
 .div1 {
   @if $wight >100 and $height >20 {
     background-color: #0f0;
-  }
-
-  @else {
+  } @else {
     background-color: #111;
   }
 
   @if $o1 {
     display: block;
-  }
-
-  @else {
+  } @else {
     display: none;
   }
 }
 
-// + - * /(除法特殊,需要加括号 或者函数变量值 或有运算符在旁边) % 
-// 运算时  单位不相同 可以转化则转 不可转编译报错 
+// + - * /(除法特殊,需要加括号 或者函数变量值 或有运算符在旁边) %
+// 运算时  单位不相同 可以转化则转 不可转编译报错
 $width: 100;
 $height: 100px;
 
@@ -172,13 +164,13 @@ $height: 100px;
   height: math.div(10px, 2);
   // height: (10px / 2);
   // height: $height / 2;
-  content: "foo1 " + foo2;
-  content: foo1 + "foo2";
+  //content: 'foo1 ' + foo2;
+  //content: foo1 + 'foo2';
 }
 
 // 插值语句#{}
-$author: "peter";
-$name1: "font";
+$author: 'peter';
+$name1: 'font';
 $color1: color;
 $font-size: 300px;
 $line-height: 100px;
@@ -189,7 +181,7 @@ $line-height: 100px;
 */
 .insert {
   // font: $font-size/$line-height "微软雅黑"; //参数出现运算
-  #{$name1}: #{$font-size}/#{$line-height} "微软雅黑"; //所以引入插值
+  #{$name1}: #{$font-size}/#{$line-height} '微软雅黑'; //所以引入插值
   #{$color1}: red;
 }
 
@@ -204,7 +196,6 @@ $line-height: 100px;
     background-color: #0f0;
   }
 }
-
 
 /* // 包含后置数 */
 @for $i1 from 1 through 3 {
@@ -227,7 +218,6 @@ $color-list: red blue yellow skyblue grey;
 // @while
 $cloumn: 6;
 
-
 @while $cloumn >0 {
   .col-sm-#{$cloumn} {
     width: math.div($cloumn, 6) * 100;
@@ -237,7 +227,6 @@ $cloumn: 6;
 }
 
 // @function
-
 
 @function fun1($to, $gradients...) {
   @return linear-gradient($to, $gradients);
@@ -256,7 +245,7 @@ $cloumn: 6;
 $list: 100px 200px 300px;
 
 span {
-  width: min($list...);
+  //width: min($list...);
 }
 
 // 三元条件函数if(没有@) 相当于三元运算符
@@ -265,7 +254,6 @@ $flag: false;
 .p1 {
   color: if($flag, #fff, #000);
 }
-
 
 // @at-root  作用：跳出嵌套 应用场景：logo在header里面然后加跳出嵌套
 .p1 {

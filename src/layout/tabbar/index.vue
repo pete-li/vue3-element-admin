@@ -14,7 +14,7 @@ import breadcrumb from './breadcrumb/index.vue'
 import setting from './setting/index.vue'
 import useSettingStore from '@/store/modules/setting'
 
-let settingStore = useSettingStore()
+const settingStore = useSettingStore()
 </script>
 
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 const useSettingStore = defineStore('Setting', {
   state: () => {
     return {
-      isFold: localStorage.getItem('isFold') === 'true',
+      isFold: false,
       isRefresh: false,
     }
   },
