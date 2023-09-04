@@ -10,7 +10,7 @@ const option = {
     {
       type: 'liquidFill',
       shape: 'circle',
-      radius: '80%',
+      radius: '70%',
       center: ['50%', '50%'],
       data: [0.6, 0.4, 0.5],
       // 球体配置

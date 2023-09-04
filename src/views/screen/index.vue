@@ -34,13 +34,7 @@
             <span class="map-title">景区实时航线地图</span>
           </div>
           <div class="center-bottom">
-            <span class="title">未来30天游客量趋势图</span>
-            <img
-              class="title-img"
-              src="./images/dataScreen-title.png"
-              alt="title-img"
-            />
-            <div class="main-content"></div>
+            <Future30Visitors />
           </div>
         </div>
         <!-- 主体 右侧 -->
@@ -85,6 +79,7 @@ import { useRouter } from 'vue-router'
 import RealTimeVisitor from '@/views/screen/components/RealTimeVisitor.vue'
 import MaleFemaleRatio from '@/views/screen/components/MaleFemaleRatio.vue'
 import AgeRatio from '@/views/screen/components/AgeRatio.vue'
+import Future30Visitors from '@/views/screen/components/Future30Visitors.vue'
 
 const router = useRouter()
 const screenBoxRef = ref()
