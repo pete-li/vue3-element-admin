@@ -231,9 +231,9 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (
 // 上传限制
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
   if (
-    rawFile.type !== 'image/jpeg' &&
-    rawFile.type !== 'image/png' &&
-    rawFile.type !== 'image/gif'
+    rawFile.type !== 'images/jpeg' &&
+    rawFile.type !== 'images/png' &&
+    rawFile.type !== 'images/gif'
   ) {
     ElMessage.error('上传的文件类型必须是图片格式！')
     return false

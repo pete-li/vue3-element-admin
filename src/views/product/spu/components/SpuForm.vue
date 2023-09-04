@@ -192,9 +192,9 @@ const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
 // 上传前限制图片判断
 const handlerUpload = (file: any) => {
   if (
-    file.type === 'image/png' ||
-    file.type === 'image/jpeg' ||
-    file.type === 'image/gif'
+    file.type === 'images/png' ||
+    file.type === 'images/jpeg' ||
+    file.type === 'images/gif'
   ) {
     if (file.size / 1024 / 1024 < 5) {
       return true

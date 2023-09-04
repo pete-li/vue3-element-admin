@@ -1,0 +1,227 @@
+$primary-color: #05e8fe;
+
+.screen-container {
+  width: 100vw;
+  height: 100vh;
+  background: url(images/bg.png) no-repeat center;
+  background-size: cover;
+  font-family: 'YouSheBiaoTiHei', Arial, sans-serif;
+
+  .screen-layout {
+    position: fixed; // 使用fixed固定在正中间
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    width: 1920px;
+    height: 1080px;
+    transition: transform 0.3s;
+    transform-origin: left top;   // 障眼法缩放基点左上角 只在右下角方向伸缩
+
+    // 数据大屏顶部
+    .top {
+      display: flex;
+      width: 100%;
+      height: 38px;
+
+
+      .top-left,
+      .top-right{
+        flex: 1.5;
+        height: 100%;
+        background: url("images/dataScreen-header-left-right-bg.png") no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .top-center{
+        flex: 2;
+        width: 100%;
+        height: 82px;
+        background: url("images/dataScreen-header-center-bg.png") no-repeat;
+        background-size: 100% 100%;
+
+        .title{
+          display: block;
+          width: 100%;
+          height: 82px;
+          line-height: 82px;
+          color: $primary-color;
+          font-size: 32px;
+          text-align: center;
+          letter-spacing: 4px;
+          user-select: none;
+        }
+      }
+
+      .home,
+      .report{
+        float: right;
+        display: block;
+        width: 136px;
+        height: 42px;
+        color:$primary-color;
+        text-align: center;
+        line-height: 42px;
+        font-size: 18px;
+        font-weight: 400;
+        background: url("images/dataScreen-header-btn-bg-l.png") no-repeat;
+        background-size: 100% 100%;
+        cursor: pointer;
+      }
+
+      .report{
+        float: left;
+        background: url("images/dataScreen-header-btn-bg-r.png") no-repeat;
+      }
+
+      .cur-time{
+        float: right;
+        margin-right: 44px;
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 38px;
+        color: $primary-color;
+      }
+
+    }
+
+    // 数据大屏主体
+    .main {
+      display: flex;
+      flex: 1;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      padding: 12px 42px 20px;
+
+      // 主体 左边
+      .main-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 394px;
+        height: 100%;
+        margin-right: 40px;
+
+        .left-top {
+          display: flex;
+          flex-direction: column;
+          height: 37%;
+          background: url("images/dataScreen-main-lt.png") no-repeat;
+          background-size: cover;
+
+        }
+
+        .left-center {
+          display: flex;
+          flex-direction: column;
+          height: 30%;
+          background: url("images/dataScreen-main-lc.png") no-repeat;
+          background-size: cover;
+        }
+
+        .left-bottom {
+          display: flex;
+          flex-direction: column;
+          height: 27%;
+          background: url("images/dataScreen-main-lb.png") no-repeat;
+          background-size: cover;
+        }
+      }
+
+      //主体 中间
+      .main-center {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .center-top {
+          width: 100%;
+          flex: 1;
+          margin-top: 78px;
+
+          .map-title {
+            z-index: 999;
+            color: white;
+            display: block;
+            width: 270px;
+            height: 25px;
+            font-size: 18px;
+            line-height: 25px;
+            text-align: center;
+            background: url("./images/map-title-bg.png") no-repeat;
+            background-size: cover;
+            padding-right: 62px;
+          }
+        }
+
+        .center-bottom {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 252px;
+          background: url("images/dataScreen-main-cb.png") no-repeat;
+          background-size: cover;
+        }
+      }
+
+      //主体 右边
+      .main-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 394px;
+        height: 100%;
+        margin-left: 40px;
+
+        .right-top {
+          display: flex;
+          flex-direction: column;
+          height: 37%;
+          background: url("images/dataScreen-main-rt.png") no-repeat;
+          background-size: cover;
+        }
+
+        .right-center {
+          display: flex;
+          flex-direction: column;
+          height: 30%;
+          background: url("images/dataScreen-main-rc.png") no-repeat;
+          background-size: cover;
+        }
+
+        .right-bottom {
+          display: flex;
+          flex-direction: column;
+          height: 27%;
+          background: url("images/dataScreen-main-rb.png") no-repeat;
+          background-size: cover;
+        }
+      }
+
+      //主体内所有标题和标题图片样式相同
+      .title{
+        color: white;
+        font-size: 18px;
+        line-height: 16px;
+        letter-spacing: 1px;
+      }
+
+      .title-img{
+        width: 68px;
+        height: 7px;
+        margin-top: 12px;
+        margin-bottom: 15px;
+      }
+
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        font-family: Arial, sans-serif;
+      }
+    }
+  }
+}
