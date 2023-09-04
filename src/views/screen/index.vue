@@ -40,31 +40,13 @@
         <!-- 主体 右侧 -->
         <div class="main-right">
           <div class="right-top">
-            <span class="title">热门景区排行</span>
-            <img
-              class="title-img"
-              src="./images/dataScreen-title.png"
-              alt="title-img"
-            />
-            <div class="main-content"></div>
+            <HotSceneryAreas />
           </div>
           <div class="right-center">
-            <span class="title">年度游客量对比</span>
-            <img
-              class="title-img"
-              src="./images/dataScreen-title.png"
-              alt="title-img"
-            />
-            <div class="main-content"></div>
+            <AnnualVisitors />
           </div>
           <div class="right-bottom">
-            <span class="title">预约渠道数据统计</span>
-            <img
-              class="title-img"
-              src="./images/dataScreen-title.png"
-              alt="title-img"
-            />
-            <div class="main-content"></div>
+            <BookingChannels />
           </div>
         </div>
       </div>
@@ -77,9 +59,12 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import moment from 'moment'
 import { useRouter } from 'vue-router'
 import RealTimeVisitor from '@/views/screen/components/RealTimeVisitor.vue'
-import MaleFemaleRatio from '@/views/screen/components/MaleFemaleRatio.vue'
+import MaleFemaleRatio from '@/views/screen/components/SexRatio.vue'
 import AgeRatio from '@/views/screen/components/AgeRatio.vue'
 import Future30Visitors from '@/views/screen/components/Future30Visitors.vue'
+import AnnualVisitors from '@/views/screen/components/AnnualVisitors.vue'
+import HotSceneryAreas from '@/views/screen/components/HotSceneryAreas.vue'
+import BookingChannels from '@/views/screen/components/BookingChannels.vue'
 
 const router = useRouter()
 const screenBoxRef = ref()
