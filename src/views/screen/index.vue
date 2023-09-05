@@ -58,14 +58,14 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import moment from 'moment'
 import { useRouter } from 'vue-router'
-import RealTimeVisitor from '@/views/screen/components/RealTimeVisitor.vue'
-import MaleFemaleRatio from '@/views/screen/components/SexRatio.vue'
-import AgeRatio from '@/views/screen/components/AgeRatio.vue'
-import Future30Visitors from '@/views/screen/components/Future30Visitors.vue'
-import AnnualVisitors from '@/views/screen/components/AnnualVisitors.vue'
-import HotSceneryAreas from '@/views/screen/components/HotSceneryAreas.vue'
-import BookingChannels from '@/views/screen/components/BookingChannels.vue'
-import MapAirplaneRoutes from '@/views/screen/components/MapAirplaneRoutes.vue'
+import RealTimeVisitor from '@/views/screen/components/RealTimeVisitorChart.vue'
+import MaleFemaleRatio from '@/views/screen/components/SexRatioChart.vue'
+import AgeRatio from '@/views/screen/components/AgeRatioChart.vue'
+import Future30Visitors from '@/views/screen/components/Future30VisitorsChart.vue'
+import AnnualVisitors from '@/views/screen/components/AnnualVisitorsChart.vue'
+import HotSceneryAreas from '@/views/screen/components/HotSceneryAreasChart.vue'
+import BookingChannels from '@/views/screen/components/BookingChannelsChart.vue'
+import MapAirplaneRoutes from '@/views/screen/components/MapAirplaneRoutesChart.vue'
 
 const router = useRouter()
 const screenBoxRef = ref()
