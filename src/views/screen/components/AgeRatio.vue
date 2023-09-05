@@ -20,8 +20,8 @@ const option: EChartsOption = {
     formatter: '{b} <br/>占比：{d}%',
   },
   title: {
-    text: '今日总数',
-    left: '24%',
+    text: '年龄占比',
+    left: '93px',
     top: '100px',
     textStyle: {
       color: '#fff',
@@ -91,14 +91,18 @@ onMounted(() => {
 
 <template>
   <span class="title">年龄比例</span>
-  <img class="title-img" src="../images/dataScreen-title.png" alt="title-img" />
-  <div class="main-content">
+  <img
+    class="title-img"
+    src="../assets/images/dataScreen-title.png"
+    alt="title-img"
+  />
+  <div class="main-chart-content">
     <div class="ageRatioChart" ref="ageRatioChartRef"></div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.main-content {
+.main-chart-content {
   width: 100%;
   height: 100%;
 

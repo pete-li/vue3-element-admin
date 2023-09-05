@@ -66,16 +66,20 @@ onMounted(() => {
 
 <template>
   <span class="title">男女比例</span>
-  <img class="title-img" src="../images/dataScreen-title.png" alt="title-img" />
-  <div class="main-content">
+  <img
+    class="title-img"
+    src="../assets/images/dataScreen-title.png"
+    alt="title-img"
+  />
+  <div class="main-chart-content">
     <div class="male-female-layout">
       <div class="male-layout">
         <span>男士</span>
-        <img src="../images/man.png" alt="man" />
+        <img src="../assets/images/man.png" alt="man" />
       </div>
       <div class="female-layout">
         <span>女士</span>
-        <img src="../images/woman.png" alt="woman" />
+        <img src="../assets/images/woman.png" alt="woman" />
       </div>
     </div>
     <div class="sexRatioChart" ref="sexRatioChartRef"></div>
@@ -83,7 +87,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-.main-content {
+.main-chart-content {
   padding: 40px 60px;
 
   .male-female-layout {
@@ -98,12 +102,12 @@ onMounted(() => {
       align-items: center;
       width: 110px;
       height: 115px;
-      background: url('../images/man-bg.png') no-repeat;
+      background: url('../assets/images/man-bg.png') no-repeat;
       background-size: cover;
     }
 
     .female-layout {
-      background: url('../images/woman-bg.png') no-repeat;
+      background: url('../assets/images/woman-bg.png') no-repeat;
       background-size: cover;
     }
 

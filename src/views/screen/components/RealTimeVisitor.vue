@@ -76,8 +76,12 @@ onMounted(() => {
 
 <template>
   <span class="title">实时游客统计</span>
-  <img class="title-img" src="../images/dataScreen-title.png" alt="title-img" />
-  <div class="main-content">
+  <img
+    class="title-img"
+    src="../assets/images/dataScreen-title.png"
+    alt="title-img"
+  />
+  <div class="main-chart-content">
     <div class="actual-total">
       <span class="bookable-people">
         可预约总量
@@ -99,7 +103,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-.main-content {
+.main-chart-content {
   .actual-total {
     display: flex;
     justify-content: center;
@@ -119,7 +123,7 @@ onMounted(() => {
       width: 52px;
       height: 50px;
       line-height: 50px;
-      background: url('../images/total.png') no-repeat;
+      background: url('../assets/images/total.png') no-repeat;
       background-size: cover;
       color: #6ff;
       font-size: 32px;

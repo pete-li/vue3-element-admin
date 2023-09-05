@@ -154,14 +154,18 @@ onMounted(() => {
 
 <template>
   <span class="title">未来30天游客量趋势图</span>
-  <img class="title-img" src="../images/dataScreen-title.png" alt="title-img" />
-  <div class="main-content">
+  <img
+    class="title-img"
+    src="../assets/images/dataScreen-title.png"
+    alt="title-img"
+  />
+  <div class="main-chart-content">
     <div class="futureLineChart" ref="futureLineChartRef"></div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.main-content {
+.main-chart-content {
   width: 100%;
   height: 100%;
 
@@ -176,7 +180,7 @@ onMounted(() => {
       display: flex;
       align-items: center;
       height: 60px;
-      background: url('../images/line-bg.png') no-repeat;
+      background: url('../assets/images/line-bg.png') no-repeat;
       background-size: 100% 100%;
       span {
         width: 100%;

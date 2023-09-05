@@ -34,7 +34,7 @@ const colors = [
   '#4dc89d',
   '#ffd3aa',
 ]
-const ageRatioChartRef = ref()
+const bookingChannelChartRef = ref()
 const option: EChartsOption = {
   tooltip: {
     show: true,
@@ -50,8 +50,8 @@ const option: EChartsOption = {
   color: colors,
   legend: {
     show: true,
-    top: 'middle',
-    left: '12px',
+    top: '20px',
+    left: '16px',
     icon: 'circle',
     orient: 'vertical',
     itemWidth: 10,
@@ -74,7 +74,7 @@ const option: EChartsOption = {
   series: [
     {
       type: 'pie',
-      radius: ['50%', '92'],
+      radius: ['65%', '90%'],
       center: ['68%', '45%'],
       data: data.value,
       color: colors,
@@ -87,7 +87,7 @@ const option: EChartsOption = {
       },
 
       label: {
-        show: true,
+        show: false,
         position: 'inside',
         formatter: '{d}%',
         color: '#fff',
@@ -376,25 +376,29 @@ const option: EChartsOption = {
 }
 
 onMounted(() => {
-  const chart = echarts.init(ageRatioChartRef.value)
+  const chart = echarts.init(bookingChannelChartRef.value)
   chart.setOption(option)
 })
 </script>
 
 <template>
   <span class="title">预约渠道数据统计</span>
-  <img class="title-img" src="../images/dataScreen-title.png" alt="title-img" />
-  <div class="main-content">
-    <div class="ageRatioChart" ref="ageRatioChartRef"></div>
+  <img
+    class="title-img"
+    src="../assets/images/dataScreen-title.png"
+    alt="title-img"
+  />
+  <div class="main-chart-content">
+    <div class="bookingChannelChart" ref="bookingChannelChartRef"></div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.main-content {
+.main-chart-content {
   width: 100%;
   height: 100%;
 
-  .ageRatioChart {
+  .bookingChannelChart {
     width: 100%;
     height: 100%;
   }

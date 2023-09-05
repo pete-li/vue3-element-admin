@@ -186,14 +186,18 @@ onMounted(() => {
 
 <template>
   <span class="title">年度游客量对比</span>
-  <img class="title-img" src="../images/dataScreen-title.png" alt="title-img" />
-  <div class="main-content">
+  <img
+    class="title-img"
+    src="../assets/images/dataScreen-title.png"
+    alt="title-img"
+  />
+  <div class="main-chart-content">
     <div class="annualLineChart" ref="annualLineChartRef"></div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.main-content {
+.main-chart-content {
   width: 100%;
   height: 100%;
 
@@ -208,7 +212,7 @@ onMounted(() => {
       width: 206px;
       height: 103px;
       padding: 5px 20px;
-      background: url('../images/contrast-bg.png') no-repeat;
+      background: url('../assets/images/contrast-bg.png') no-repeat;
       background-size: 100% 100%;
 
       .annual-month {

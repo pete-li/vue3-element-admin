@@ -3,7 +3,7 @@ $primary-color: #05e8fe;
 .screen-container {
   width: 100vw;
   height: 100vh;
-  background: url(images/bg.png) no-repeat center;
+  background: url(assets/images/bg.png) no-repeat center;
   background-size: cover;
   font-family: 'YouSheBiaoTiHei', Arial, sans-serif;
 
@@ -29,7 +29,7 @@ $primary-color: #05e8fe;
       .top-right{
         flex: 1.5;
         height: 100%;
-        background: url("images/dataScreen-header-left-right-bg.png") no-repeat;
+        background: url("assets/images/dataScreen-header-left-right-bg.png") no-repeat;
         background-size: 100% 100%;
       }
 
@@ -37,7 +37,7 @@ $primary-color: #05e8fe;
         flex: 2;
         width: 100%;
         height: 82px;
-        background: url("images/dataScreen-header-center-bg.png") no-repeat;
+        background: url("assets/images/dataScreen-header-center-bg.png") no-repeat;
         background-size: 100% 100%;
 
         .title{
@@ -64,14 +64,14 @@ $primary-color: #05e8fe;
         line-height: 42px;
         font-size: 18px;
         font-weight: 400;
-        background: url("images/dataScreen-header-btn-bg-l.png") no-repeat;
+        background: url("assets/images/dataScreen-header-btn-bg-l.png") no-repeat;
         background-size: 100% 100%;
         cursor: pointer;
       }
 
       .report{
         float: left;
-        background: url("images/dataScreen-header-btn-bg-r.png") no-repeat;
+        background: url("assets/images/dataScreen-header-btn-bg-r.png") no-repeat;
       }
 
       .cur-time{
@@ -107,7 +107,7 @@ $primary-color: #05e8fe;
           display: flex;
           flex-direction: column;
           height: 37%;
-          background: url("images/dataScreen-main-lt.png") no-repeat;
+          background: url("assets/images/dataScreen-main-lt.png") no-repeat;
           background-size: cover;
 
         }
@@ -116,7 +116,7 @@ $primary-color: #05e8fe;
           display: flex;
           flex-direction: column;
           height: 30%;
-          background: url("images/dataScreen-main-lc.png") no-repeat;
+          background: url("assets/images/dataScreen-main-lc.png") no-repeat;
           background-size: cover;
         }
 
@@ -124,7 +124,7 @@ $primary-color: #05e8fe;
           display: flex;
           flex-direction: column;
           height: 27%;
-          background: url("images/dataScreen-main-lb.png") no-repeat;
+          background: url("assets/images/dataScreen-main-lb.png") no-repeat;
           background-size: cover;
         }
       }
@@ -139,20 +139,6 @@ $primary-color: #05e8fe;
           width: 100%;
           flex: 1;
           margin-top: 78px;
-
-          .map-title {
-            z-index: 999;
-            color: white;
-            display: block;
-            width: 270px;
-            height: 25px;
-            font-size: 18px;
-            line-height: 25px;
-            text-align: center;
-            background: url("./images/map-title-bg.png") no-repeat;
-            background-size: cover;
-            padding-right: 62px;
-          }
         }
 
         .center-bottom {
@@ -160,7 +146,7 @@ $primary-color: #05e8fe;
           flex-direction: column;
           width: 100%;
           height: 252px;
-          background: url("images/dataScreen-main-cb.png") no-repeat;
+          background: url("assets/images/dataScreen-main-cb.png") no-repeat;
           background-size: cover;
         }
       }
@@ -178,7 +164,7 @@ $primary-color: #05e8fe;
           display: flex;
           flex-direction: column;
           height: 37%;
-          background: url("images/dataScreen-main-rt.png") no-repeat;
+          background: url("assets/images/dataScreen-main-rt.png") no-repeat;
           background-size: cover;
         }
 
@@ -186,7 +172,7 @@ $primary-color: #05e8fe;
           display: flex;
           flex-direction: column;
           height: 30%;
-          background: url("images/dataScreen-main-rc.png") no-repeat;
+          background: url("assets/images/dataScreen-main-rc.png") no-repeat;
           background-size: cover;
         }
 
@@ -194,7 +180,7 @@ $primary-color: #05e8fe;
           display: flex;
           flex-direction: column;
           height: 27%;
-          background: url("images/dataScreen-main-rb.png") no-repeat;
+          background: url("assets/images/dataScreen-main-rb.png") no-repeat;
           background-size: cover;
         }
       }
@@ -214,7 +200,7 @@ $primary-color: #05e8fe;
         margin-bottom: 15px;
       }
 
-      .main-content {
+      .main-chart-content {
         display: flex;
         flex-direction: column;
         align-items: center;

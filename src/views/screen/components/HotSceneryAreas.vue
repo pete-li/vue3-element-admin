@@ -43,7 +43,7 @@ const data = ref([
   },
 ])
 
-const ageRatioChartRef = ref()
+const hotSceneryChartRef = ref()
 const option: EChartsOption = {
   grid: {
     top: '0',
@@ -200,26 +200,30 @@ const option: EChartsOption = {
 }
 
 onMounted(() => {
-  const chart = echarts.init(ageRatioChartRef.value)
+  const chart = echarts.init(hotSceneryChartRef.value)
   chart.setOption(option)
 })
 </script>
 
 <template>
   <span class="title">热门景区排行</span>
-  <img class="title-img" src="../images/dataScreen-title.png" alt="title-img" />
-  <div class="main-content">
+  <img
+    class="title-img"
+    src="../assets/images/dataScreen-title.png"
+    alt="title-img"
+  />
+  <div class="main-chart-content">
     <div class="echarts-header">
       <span>排名</span>
       <span>景区</span>
       <span>预约数量</span>
     </div>
-    <div class="ageRatioChart" ref="ageRatioChartRef"></div>
+    <div class="hotSceneryRatioChart" ref="hotSceneryChartRef"></div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.main-content {
+.main-chart-content {
   width: 100%;
   height: 100%;
   padding: 0 12px;
@@ -230,7 +234,7 @@ onMounted(() => {
     width: 100%;
     margin: 16px 2px 0 2px;
     line-height: 36px;
-    background: url('../images/rankingChart-bg.png') no-repeat;
+    background: url('../assets/images/rankingChart-bg.png') no-repeat;
     background-size: 100% 100%;
     span {
       width: 18%;
@@ -249,7 +253,7 @@ onMounted(() => {
     }
   }
 
-  .ageRatioChart {
+  .hotSceneryRatioChart {
     width: 100%;
     height: 100%;
   }

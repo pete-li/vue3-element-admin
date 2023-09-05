@@ -31,7 +31,7 @@
         <!-- 主体 中央 -->
         <div class="main-center">
           <div class="center-top">
-            <span class="map-title">景区实时航线地图</span>
+            <MapAirplaneRoutes />
           </div>
           <div class="center-bottom">
             <Future30Visitors />
@@ -65,6 +65,7 @@ import Future30Visitors from '@/views/screen/components/Future30Visitors.vue'
 import AnnualVisitors from '@/views/screen/components/AnnualVisitors.vue'
 import HotSceneryAreas from '@/views/screen/components/HotSceneryAreas.vue'
 import BookingChannels from '@/views/screen/components/BookingChannels.vue'
+import MapAirplaneRoutes from '@/views/screen/components/MapAirplaneRoutes.vue'
 
 const router = useRouter()
 const screenBoxRef = ref()
