@@ -15,10 +15,10 @@ export interface skuSaleAttrValue {
   id?: number
   saleAttrId: number | string //销售属性ID
   saleAttrValueId: number | string //销售属性值的ID
-  skuId: number
-  spuId: number
-  saleAttrName: string
-  saleAttrValueName: string
+  skuId?: number
+  spuId?: number
+  saleAttrName?: string
+  saleAttrValueName?: string
 }
 
 // sku照片

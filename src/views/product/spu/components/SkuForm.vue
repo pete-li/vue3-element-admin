@@ -39,7 +39,7 @@ const attrValueChange = (attrInfo: AttrInfo, attrValId: number) => {
 const setDefaultImgHandler = (row: SpuImage) => {
   imgTableRef.value?.clearSelection() //预防用户全选操作 先清空选择
   imgTableRef.value?.toggleRowSelection(row, true) //只选中点击那一行的图片信息
-  addSkuForm.skuDefaultImg = row.imgUrl
+  addSkuForm.skuDefaultImg = row.imgUrl!
 }
 
 // 处理保存时候的逻辑

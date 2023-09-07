@@ -83,7 +83,6 @@ const predefineColors = ref([
   '#c7158577',
 ])
 const color = ref('')
-const pickerRef = ref()
 
 // 主题颜色发生改变
 const themeColorChange = (value: string) => {

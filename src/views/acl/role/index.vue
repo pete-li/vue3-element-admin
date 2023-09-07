@@ -232,7 +232,7 @@ const filterSelectedNode = (
 ) => {
   permissionList.forEach((permission) => {
     if (permission.select && permission.level === 4) {
-      selectedTreeKeys.push(permission.id)
+      selectedTreeKeys.push(permission.id!)
     }
     if (permission.children && permission.children.length) {
       filterSelectedNode(permission.children, selectedTreeKeys)
