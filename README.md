@@ -2,7 +2,7 @@
 
 ### 介绍 📖
 
-这是一款基于 Vue3.3、TypeScript、Vite4.3、Pinia、Element-Plus、Echarts等 开源的后台管理框架，使用目前最新技术栈开发。该系统实现了包括用户管理、电商商品管理、主题切换等功能。另外本项目还封装了常用组件、自定义指令、动态路由、按钮级别权限控制等。
+这是一款基于 Vue3.3、TypeScript、Vite4.3、Pinia、Element-Plus、Echarts等的后台管理框架，使用目前最新技术栈开发。该系统实现了包括用户管理、电商商品管理、主题切换等功能。另外本项目还封装了常用组件、自定义指令、动态路由、按钮级别权限控制等。
 
 ### 在线预览 👀
 
@@ -83,29 +83,28 @@ pnpm commit
 
 - 登录页：
 
-
-
-
+![login-page](https://github.com/pete-li/vue3-element-admin/assets/46208115/54e9746c-58c4-4bfd-af46-8520c95b8215)
 
 - 首页：
 
+![home-page](https://github.com/pete-li/vue3-element-admin/assets/46208115/dab311e1-ff78-4fb8-8bb5-0131440439e9)
 
+- 权限管理页：
+  
+![user-admin](https://github.com/pete-li/vue3-element-admin/assets/46208115/1fa03122-8918-4978-8ca3-067f79a21bc3)
+![role-admin](https://github.com/pete-li/vue3-element-admin/assets/46208115/e86f5051-c23b-448d-b51b-450999042298)
+![permission-admin](https://github.com/pete-li/vue3-element-admin/assets/46208115/2232933f-a349-4aff-ac13-09c7f843a4fb)
 
+- 商品管理页：
 
-
-- 表格页：
-
-
-
-
-
-- 数据可视化
-
-
+![trade-mark-admin](https://github.com/pete-li/vue3-element-admin/assets/46208115/3b8ec35d-8425-4891-923f-5cf7f1d58e37)
+![attr-admin](https://github.com/pete-li/vue3-element-admin/assets/46208115/1e29ba43-fd2c-4c30-811f-ff61b12c0b3c)
+![spu-admin](https://github.com/pete-li/vue3-element-admin/assets/46208115/007978f5-931a-4c65-9dca-ac9f26478452)
+![sku-admin](https://github.com/pete-li/vue3-element-admin/assets/46208115/5929cb1c-0a59-47f2-bc1e-e7ac1dfd8370)
 
 - 数据大屏：
 
-
+![data-screen](https://github.com/pete-li/vue3-element-admin/assets/46208115/0d002488-aa6c-44e5-b6f8-b4628cf64ff5)
 
 ### 项目后台接口 🧩
 
