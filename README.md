@@ -11,6 +11,7 @@
 ### 代码仓库 ⭐
 
 - GitHub：https://github.com/pete-li/vue3-element-admin
+- Gitee：https://gitee.com/Li_Peter/vue3-element-admin
 
 ### 项目功能 🔨
 
