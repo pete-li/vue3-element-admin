@@ -4,9 +4,11 @@ import nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
 import useUserStore from '@/store/modules/user'
 import { ElMessage } from 'element-plus'
+
 nprogress.configure({ showSpinner: false }) //关闭刷新圆圈
 
 const router = createRouter({
+  // history: createWebHistory(),
   history: createWebHashHistory(),
   routes: constantRoutes,
   scrollBehavior() {
