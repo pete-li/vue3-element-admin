@@ -76,15 +76,19 @@ const timerId = setInterval(() => {
   curTime.value = moment().format('YYYY年MM月DD日 HH:mm:ss') //每隔一秒刷新一次
 }, 1000)
 
+// 动态计算Transform的scale参数
+const computeTransform = () => {
+  if (!screenBoxRef.value) return
+  screenBoxRef.value.style.transform = `scale(${getScale()}) translate(-50%, -50%)`
+}
+
 // 组件挂载的时候就计算缩放比例对box进行动态调整
 onMounted(() => {
-  screenBoxRef.value.style.transform = `scale(${getScale()}) translate(-50%, -50%)`
+  computeTransform()
 })
 
 // 浏览器窗口发生变更的时候也进行动态调整
-window.onresize = () => {
-  screenBoxRef.value.style.transform = `scale(${getScale()}) translate(-50%, -50%)`
-}
+window.addEventListener('resize', computeTransform)
 
 // 注意这里使用的设计稿为1920 * 1080  即（16:9的屏幕)
 // 获得当前的缩放比例 (宽高比例取最小者 因为取最大会占满屏 有可能会对内部元素布局造成变形？？)
@@ -94,9 +98,10 @@ const getScale = (w = 1920, h = 1080) => {
   return Math.min(wScaleRatio, hScaleRatio)
 }
 
-// 组件卸载前清除定时器
+// 组件卸载前清除定时器与窗口监听事件
 onBeforeUnmount(() => {
   clearInterval(timerId)
+  window.removeEventListener('resize', computeTransform)
 })
 </script>
 

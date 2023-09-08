@@ -35,8 +35,8 @@ router.beforeEach(async (to, from, next) => {
     if (to.path === '/login') {
       next({ path: from.path }) //登录后再去登录页 从哪来回哪去 不给放行
     } else {
-      //username作为路由是否已经逐个注册完成(addRoute方法)判断依据
       if (userStore.username) {
+        // username 作为路由是否已经逐个注册完成(addRoute方法)的判断依据
         next() //此时异步路由已经全部加载完 有用户信息 直接放行
       } else {
         // 没有用户名 说明获取用户信息请求还没发生 故此时路由还没add完 需要等待user_info逐个路由动态加载完

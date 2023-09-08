@@ -32,6 +32,14 @@
     </template>
   </el-popover>
 
+  <el-button
+    :icon="Link"
+    size="small"
+    title="GitHub主页"
+    @click="gotoGitHub"
+    circle
+  />
+
   <img class="avatar" :src="userStore.avatar" alt="avatar" />
   <el-dropdown>
     <span class="el-dropdown-link" style="cursor: pointer">
@@ -54,6 +62,7 @@ import {
   Setting,
   FullScreen,
   ArrowDown,
+  Link,
 } from '@element-plus/icons-vue'
 import useSettingStore from '@/store/modules/setting'
 import useUserStore from '@/store/modules/user'
@@ -65,6 +74,10 @@ import { Sunny, Moon } from '@element-plus/icons-vue'
 const settingStore = useSettingStore()
 const userStore = useUserStore()
 const route = useRoute()
+
+const gotoGitHub = () => {
+  window.open('https://github.com/pete-li/vue3-element-admin', '_blank')
+}
 
 const predefineColors = ref([
   '#ff4500',
@@ -102,7 +115,7 @@ onMounted(() => {
   html.style.setProperty('--el-color-primary', color.value)
 })
 
-// 监听暗黑模式是否改变
+// 监听暗黑模式是否改变 (watchEffect不适合监听新旧值赋值相关的)
 watch(
   () => isDarkTheme.value,
   (newVal) => {

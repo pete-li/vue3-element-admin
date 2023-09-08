@@ -1,7 +1,7 @@
 <template>
-  <el-main class="layout_main" :class="{ isFold: settingStore.isFold }">
-    <!-- 此处用作用域插槽将组件传递给父组件供程序员使用 -->
+  <el-main class="main_layout" :class="{ isFold: settingStore.isFold }">
     <router-view v-slot="{ Component }">
+      <!-- 此处用作用域插槽将{Component}组件传递给父组件供程序员使用 -->
       <transition name="fade">
         <component :is="Component" v-if="!settingStore.isRefresh" />
       </transition>
@@ -26,7 +26,7 @@ watch(
 </script>
 
 <style lang="scss" scoped>
-.layout_main {
+.main_layout {
   position: absolute;
   width: calc(100% - $base-menu-width);
   height: calc(100% - $base-tabbar-height);
@@ -46,6 +46,7 @@ watch(
   opacity: 0;
   transform: scale(0);
 }
+
 .fade-enter-active {
   transition: all 0.5s;
 }

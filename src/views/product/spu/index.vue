@@ -72,9 +72,10 @@
         background
         layout="prev, pager, next, jumper, ->, sizes, total"
         :total="total"
-        @size-change="sizeChange"
-        @current-change="currentChange"
       />
+      <!--
+        @size-change="sizeChange"
+        @current-change="currentChange"-->
     </el-card>
 
     <!-- sku列表对话框 -->
@@ -115,7 +116,7 @@
 
 <script setup lang="ts">
 import { useCategoryStore } from '@/store/modules/category'
-import { onBeforeUnmount, ref, watch } from 'vue'
+import { onBeforeUnmount, ref, watchEffect } from 'vue'
 import { reqDeleteSpuInfo, reqGetSpuInfo } from '@/api/product/spu'
 import Category from '@/components/Category/index.vue'
 import { SpuInfo } from '@/api/product/spu/type.ts'
@@ -181,14 +182,6 @@ const addSpuBtHandler = () => {
   scene.value = 2
 }
 
-// 监听c3Id刷新spuInfo数据
-watch(
-  () => categoryStore.c3Id,
-  async () => {
-    await refreshSpuInfo()
-  },
-)
-
 // 网络请求进行刷新spuInfo数据
 const refreshSpuInfo = async () => {
   let res = await reqGetSpuInfo(
@@ -202,7 +195,24 @@ const refreshSpuInfo = async () => {
   }
 }
 
-// 分页器页限制值改变
+/* 使用vue3新特性watchEffect
+   refreshSpuInfo方法中使用了哪些属性
+   一旦属性发生变更 该回调就会执行 */
+watchEffect(async () => {
+  // 使用watchEffect好处：在刷新分页请求时，会用到页码等属性
+  // 一旦发生边恒 数据也跟着改变再驱动响应式 可以不用写分页器的点击事件 减少重复代码
+  await refreshSpuInfo()
+})
+
+// 监听c3Id刷新spuInfo数据
+/*watch(
+  () => categoryStore.c3Id,
+  async () => {
+    await refreshSpuInfo()
+  },
+)*/
+
+/*// 分页器页限制值改变
 const sizeChange = async () => {
   await refreshSpuInfo()
 }
@@ -210,7 +220,7 @@ const sizeChange = async () => {
 // 页码改变
 const currentChange = async () => {
   await refreshSpuInfo()
-}
+}*/
 
 // 销毁前重置分类残仓库数据 防止切换路由上一次的数据还在
 onBeforeUnmount(() => {

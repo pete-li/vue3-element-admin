@@ -163,6 +163,7 @@ const attrInfoForm = reactive<AttrInfo>({
 })
 let attrInfoList = ref<AttrInfo[]>([])
 
+// 此处不用watchEffect 因为refreshAttrInfoList内部属性过多，容易造成不必要的请求
 watch(
   () => categoryStore.c3Id,
   async () => {
@@ -175,6 +176,7 @@ watch(
 )
 
 const refreshAttrInfoList = async () => {
+  console.log('refreshAttrInfoList')
   if (!categoryStore.c1Id || !categoryStore.c2Id || !categoryStore.c3Id) return
   const res = await reqGetAttrInfoList(
     categoryStore.c1Id,
