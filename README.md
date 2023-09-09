@@ -13,11 +13,6 @@
 - GitHub：https://github.com/pete-li/vue3-element-admin
 - Gitee：https://gitee.com/Li_Peter/vue3-element-admin
 
-### 项目参考 🔗
-
-- [硅谷甄选](https://www.bilibili.com/video/BV1Xh411V7b5/)
-- [Geeker](https://github.com/HalseySpicy/Geeker-Admin)
-
 ### 项目功能 🔨
 
 - 使用 Vue3.3 + TypeScript 开发，单文件组件**＜ script setup ＞**
@@ -29,6 +24,11 @@
 - 使用 自定义指令 对按钮权限功能进行封装
 - 使用 Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
 - 使用 husky、commitlint、git-cz 规范提交信息
+
+### 项目参考 🔗
+
+- [硅谷甄选](https://www.bilibili.com/video/BV1Xh411V7b5/)
+- [Geeker](https://github.com/HalseySpicy/Geeker-Admin)
 
 ### 安装使用步骤 📔
 
