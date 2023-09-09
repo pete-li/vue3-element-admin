@@ -13,6 +13,11 @@
 - GitHub：https://github.com/pete-li/vue3-element-admin
 - Gitee：https://gitee.com/Li_Peter/vue3-element-admin
 
+### 项目参考 🔗
+
+- [硅谷甄选](https://www.bilibili.com/video/BV1Xh411V7b5/)
+- [Geeker](https://github.com/HalseySpicy/Geeker-Admin)
+
 ### 项目功能 🔨
 
 - 使用 Vue3.3 + TypeScript 开发，单文件组件**＜ script setup ＞**
