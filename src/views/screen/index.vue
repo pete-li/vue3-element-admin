@@ -1,6 +1,10 @@
 <template>
   <div class="screen-container">
-    <div class="screen-layout" ref="screenBoxRef">
+    <div
+      class="screen-layout"
+      ref="screenBoxRef"
+      style="will-change: transform"
+    >
       <!-- 数据大屏 顶部 -->
       <div class="top">
         <div class="top-left">
