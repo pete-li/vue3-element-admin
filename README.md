@@ -2,11 +2,11 @@
 
 ### 介绍 📖
 
-这是一款基于 Vue3、TypeScript、Vite4、Pinia、Element-Plus、Echarts 等的后台管理框架，使用目前最新技术栈开发。该项目实现了包括用户管理、电商商品管理、主题切换等功能，另外本项目还封装了常用组件、自定义指令、动态路由、按钮级别权限控制等。
+这是一款基于 Vue3 全家桶+TypeScript+Element-Plus+Echarts+Vite4 等的后台管理系统，使用目前最新技术栈开发。该项目由本人独立开发完成，实现了包括用户管理、商品管理、数据大屏、主题切换等功能，另外本项目还封装了常用组件、axios 网络请求、自定义指令等。
 
 ### 在线预览 👀
 
-- Link：http://120.55.183.199/ （PS：服务器带宽有点慢，第一次打开请耐心等待）
+- Link：http://120.55.183.199/ （PS：服务器白嫖阿里云试用版的，带宽比较慢，第一次打开请耐心等待）
 
 ### 代码仓库 ⭐
 
@@ -24,6 +24,11 @@
 - 使用 自定义指令 对按钮权限功能进行封装
 - 使用 Prettier 统一格式化代码，集成 ESLint、Stylelint 代码校验规范
 - 使用 husky、commitlint、git-cz 规范提交信息
+
+### 项目参考 🔗
+
+- [硅谷甄选](https://www.bilibili.com/video/BV1Xh411V7b5/)
+- [Geeker](https://github.com/HalseySpicy/Geeker-Admin)
 
 ### 安装使用步骤 📔
 
